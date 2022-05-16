@@ -9,4 +9,5 @@
     <string name="hint_name">Nama</string>
     <string name="tv_daftarAkun">Daftar Akun</string>
     <string name="hint_konfirmasiPassword">Konfirmasi password</string>
+    <string name="pindai_sampah">Pindai Sampah</string>
 </resources>
