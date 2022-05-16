@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foregroundTint="#000000"
+    tools:context=".RegisterActivity">
+
+    <Button
+        android:id="@+id/bt_login2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button1"
+        android:text="Register"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edt_registerNama"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_registerNama"
+        app:layout_constraintTop_toBottomOf="@+id/edt_registerPassword2"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="74dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="44dp"
+        android:foregroundTint="#000000"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="intentMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_daftarAkun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/tv_daftarAkun"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
+
+    <EditText
+        android:id="@+id/edt_registerNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/hint_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_daftarAkun" />
+
+    <EditText
+        android:id="@+id/edt_registerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/hint_email"
+        app:layout_constraintEnd_toEndOf="@+id/edt_registerNama"
+        app:layout_constraintStart_toStartOf="@+id/edt_registerNama"
+        app:layout_constraintTop_toBottomOf="@+id/edt_registerNama" />
+
+    <EditText
+        android:id="@+id/edt_registerTelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/hint_telp"
+        app:layout_constraintEnd_toEndOf="@+id/edt_registerNama"
+        app:layout_constraintStart_toStartOf="@+id/edt_registerNama"
+        app:layout_constraintTop_toBottomOf="@+id/edt_registerEmail" />
+
+    <EditText
+        android:id="@+id/edt_registerPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/hint_password"
+        app:layout_constraintEnd_toEndOf="@+id/edt_registerNama"
+        app:layout_constraintStart_toStartOf="@+id/edt_registerNama"
+        app:layout_constraintTop_toBottomOf="@+id/edt_registerTelp" />
+
+    <EditText
+        android:id="@+id/edt_registerPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/hint_konfirmasiPassword"
+        app:layout_constraintEnd_toEndOf="@+id/edt_registerNama"
+        app:layout_constraintStart_toStartOf="@+id/edt_registerNama"
+        app:layout_constraintTop_toBottomOf="@+id/edt_registerPassword" />
+</androidx.constraintlayout.widget.ConstraintLayout>
