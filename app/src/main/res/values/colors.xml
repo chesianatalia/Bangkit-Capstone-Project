@@ -5,6 +5,10 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="Grove1">#295D09</color>
+    <color name="Grove2">#69AB3D</color>
+    <color name="Grove3">#AED36C</color>
+    <color name="Grove4">#E9EBED</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
