@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">BangkitCapstoneProject</string>
-<<<<<<< Updated upstream
-=======
     <string name="nama_apk">Nama Apk</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">password</string>
@@ -12,5 +10,4 @@
     <string name="tv_daftarAkun">Daftar Akun</string>
     <string name="hint_konfirmasiPassword">Konfirmasi password</string>
     <string name="pindai_sampah">Pindai Sampah</string>
->>>>>>> Stashed changes
 </resources>
