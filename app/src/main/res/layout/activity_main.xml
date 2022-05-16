@@ -10,14 +10,10 @@
         android:id="@+id/tv_appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-        android:text="Hello Hans"
-=======
         android:fontFamily="@font/poppins_bold"
         android:text="@string/nama_apk"
         android:textColor="@color/black"
         android:textSize="34sp"
->>>>>>> Stashed changes
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/logo"
         app:layout_constraintStart_toStartOf="@+id/logo"
