@@ -29,12 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        fun intentRegister(view: View) {
-            val intent = Intent(this@MainActivity, RegisterActivity::class.java)
-            startActivity(intent);
-
-        }
-
 
     }
 }

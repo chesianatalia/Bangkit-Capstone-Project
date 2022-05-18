@@ -18,10 +18,12 @@ class PhotoResult : AppCompatActivity() {
 
         binding.cameraXButton.setOnClickListener{
             val intent = Intent(this, CameraActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             launcherIntentCameraX.launch(intent)
         }
         val myFile = intent.getSerializableExtra("picture") as File
-        val result = BitmapFactory.decodeFile(myFile.path)
+        val isBackCamera = intent.getBooleanExtra("isBackCamera", true) as Boolean
+        val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
         binding.previewImageView.setImageBitmap(result)
     }
 
@@ -31,7 +33,7 @@ class PhotoResult : AppCompatActivity() {
         if (it.resultCode == CAMERA_X_RESULT) {
             val myFile = it.data?.getSerializableExtra("picture") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
-            val result = BitmapFactory.decodeFile(myFile.path)
+            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
 
             binding.previewImageView.setImageBitmap(result)
         }
