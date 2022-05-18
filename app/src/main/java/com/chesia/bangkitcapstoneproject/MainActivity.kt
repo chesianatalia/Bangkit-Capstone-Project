@@ -1,14 +1,14 @@
 package com.chesia.bangkitcapstoneproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import com.chesia.bangkitcapstoneproject.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
-<<<<<<< Updated upstream
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-=======
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
->>>>>>> Stashed changes
     }
+
+
 }
