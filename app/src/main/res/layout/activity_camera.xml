@@ -33,4 +33,65 @@
         android:background="@drawable/custom_button1"
         app:srcCompat="@drawable/ic_baseline_flash" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black"
+        android:alpha="0.5"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewFinder"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black"
+        android:alpha="0.5"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black"
+        android:alpha="0.5"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+
+
+    <!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintBottom_toTopOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:background="@color/black"-->
+<!--        android:alpha="0.5"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="253dp"-->
+<!--        android:layout_height="455dp"-->
+<!--        android:alpha="0.1"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/captureImage"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/viewFinder" />-->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
