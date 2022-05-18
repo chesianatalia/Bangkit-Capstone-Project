@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_profile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    cardview:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp">
+
+        <ImageView
+            android:id="@+id/img_User"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            cardview:layout_constraintEnd_toEndOf="parent"
+            cardview:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars"
+            android:background="#000000"
+            android:padding="1dp"/>
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="3dp"
+            cardview:layout_constraintStart_toStartOf="parent"
+            cardview:layout_constraintTop_toTopOf="parent"
+            cardview:layout_constraintEnd_toStartOf="@+id/img_User"
+            tools:text="Username" />
+
+        <TextView
+            android:id="@+id/tv_userPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="3dp"
+            cardview:layout_constraintStart_toStartOf="@id/tv_userName"
+            cardview:layout_constraintTop_toBottomOf="@id/tv_userName"
+            cardview:layout_constraintEnd_toStartOf="@+id/img_User"
+            tools:text="PhoneNumber"/>
+
+        <TextView
+            android:id="@+id/tv_userEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginEnd="3dp"
+            cardview:layout_constraintStart_toStartOf="@+id/tv_userPhoneNumber"
+            cardview:layout_constraintTop_toBottomOf="@+id/tv_userPhoneNumber"
+            cardview:layout_constraintEnd_toStartOf="@+id/img_User"
+            tools:text="Email"/>
+
+        <View
+            android:id="@+id/line_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            android:layout_marginTop="7dp"
+            cardview:layout_constraintStart_toStartOf="parent"
+            cardview:layout_constraintTop_toBottomOf="@+id/img_User"
+            />
+
+        <ImageView
+            android:id="@+id/img_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/poinicon"
+            cardview:layout_constraintTop_toBottomOf="@+id/line_cardView"
+            android:layout_marginTop="7dp"
+            cardview:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_userPoint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="11dp"
+            cardview:layout_constraintStart_toEndOf="@id/img_points"
+            cardview:layout_constraintTop_toBottomOf="@+id/line_cardView"
+            tools:text="10.000 points"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

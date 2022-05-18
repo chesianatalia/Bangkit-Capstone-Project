@@ -19,6 +19,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
+//             val intent = Intent(this, HomepageActivity::class.java)
+//             startActivity(intent)
+//         }
+
+        fun intentRegister(view: View) {
+            val intent = Intent(this@MainActivity, RegisterActivity::class.java)
+            startActivity(intent);
+
+        }
 
         fun intentRegister(view: View) {
             val intent = Intent(this@MainActivity, RegisterActivity::class.java)
