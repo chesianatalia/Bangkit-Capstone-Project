@@ -14,11 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BangkitCapstoneProject">
         <activity
-
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomepageActivity"
             android:exported="false" />
         <activity
-
             android:name=".PhotoResult"
             android:exported="false" />
         <activity
