@@ -20,6 +20,9 @@ class PhotoResult : AppCompatActivity() {
             val intent = Intent(this, CameraActivity::class.java)
             launcherIntentCameraX.launch(intent)
         }
+        val myFile = intent.getSerializableExtra("picture") as File
+        val result = BitmapFactory.decodeFile(myFile.path)
+        binding.previewImageView.setImageBitmap(result)
     }
 
     private val launcherIntentCameraX = registerForActivityResult(
