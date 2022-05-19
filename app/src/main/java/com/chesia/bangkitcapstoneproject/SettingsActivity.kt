@@ -24,11 +24,12 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupAction(){
         binding.tvEditProfile.setOnClickListener {
-
+            val intent = Intent(this@SettingsActivity, EditProfileActivity::class.java)
+            startActivity(intent)
         }
 
         binding.tvEditPin.setOnClickListener {
-
+            Toast.makeText(this@SettingsActivity, "Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
         binding.tvBahasa.setOnClickListener {
