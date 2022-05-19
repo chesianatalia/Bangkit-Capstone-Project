@@ -53,7 +53,7 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
 
-        binding.imgUser.setOnClickListener{
+        binding.btnHistories.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
