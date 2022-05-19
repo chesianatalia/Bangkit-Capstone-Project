@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">BangkitCapstoneProject</string>
-<<<<<<< Updated upstream
-    <string name="nama_apk">Nama Apk</string>
-=======
-
     <string name="nama_apk">rePlasc</string>
->>>>>>> Stashed changes
     <string name="hint_email">Email</string>
     <string name="hint_password">password</string>
     <string name="bt_login">Login</string>
@@ -14,8 +9,6 @@
     <string name="hint_name">Nama</string>
     <string name="tv_daftarAkun">Daftar Akun</string>
     <string name="hint_konfirmasiPassword">Konfirmasi password</string>
-<<<<<<< Updated upstream
-=======
     <string name="pindai_sampah">Pindai Sampah</string>
     <string name="sudah_buang_sampahkah_hari_ini"><u>Sudah Buang Sampahkah Hari Ini?</u></string>
     <string name="lokasi_spesial_booth_terdekat"><u>Lokasi Spesial Booth Terdekat</u></string>
@@ -41,5 +34,4 @@
     <string name="tv_editnotelp">No. telp</string>
     <string name="bt_konfirmasiedit">Konfirmasi</string>
     <string name="bt_googlesignin">Google Sign-in</string>
->>>>>>> Stashed changes
 </resources>

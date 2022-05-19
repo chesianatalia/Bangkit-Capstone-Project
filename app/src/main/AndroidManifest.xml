@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chesia.bangkitcapstoneproject">
 
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BangkitCapstoneProject">
         <activity
-<<<<<<< Updated upstream
-=======
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
@@ -33,7 +35,6 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
->>>>>>> Stashed changes
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
