@@ -51,6 +51,10 @@ class DashboardActivity : AppCompatActivity() {
                 )
             }
         }
+        binding.settingButton.setOnClickListener{
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {

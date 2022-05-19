@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BangkitCapstoneProject</string>
+    <string name="nama_apk">REPLASC</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Kata Sandi</string>
+    <string name="bt_login">Masuk</string>
+<!--    <string name="tv_register"><u>Belum punya akun?</u></string>-->
+    <string name="hint_telp">No. Telepon/Handphone</string>
+    <string name="hint_name">Nama</string>
+    <string name="tv_daftarAkun">Daftar Akun</string>
+    <string name="hint_konfirmasiPassword">Konfirmasi password</string>
+    <string name="pindai_sampah">Pindai Sampah</string>
+    <string name="sudah_buang_sampahkah_hari_ini"><u>Sudah Buang Sampahkah Hari Ini?</u></string>
+    <string name="lokasi_spesial_booth_terdekat"><u>Lokasi Spesial Booth Terdekat</u></string>
+    <string name="info_terbaru"><u>Info Terbaru</u></string>
+    <string name="historytitle">Riwayat</string>
+    <string name="usertext">Pengguna</string>
+    <string name="edit_profile">Edit Profil</string>
+    <string name="ubah_pin">Ubah Pin</string>
+    <string name="general_text">Umum</string>
+    <string name="bahasa">Bahasa</string>
+    <string name="tema">Tema</string>
+    <string name="kode_refferal">Kode Referal</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="hapus_akun">Hapus Akun</string>
+    <string name="kredit">Kredit</string>
+</resources>
