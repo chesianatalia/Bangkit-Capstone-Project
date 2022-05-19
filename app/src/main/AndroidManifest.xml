@@ -10,6 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BangkitCapstoneProject">
         <activity
+<<<<<<< Updated upstream
+=======
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomepageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhotoResult"
+            android:exported="false" />
+        <activity
+            android:name=".CameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+        <activity
+>>>>>>> Stashed changes
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
