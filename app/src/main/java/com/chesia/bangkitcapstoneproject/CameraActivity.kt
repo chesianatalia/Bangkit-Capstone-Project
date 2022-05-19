@@ -93,8 +93,6 @@ class CameraActivity : AppCompatActivity() {
                     cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
                     setResult(PhotoResult.CAMERA_X_RESULT, intent)
                     startActivity(intent)
-//                    Toast.makeText(this@CameraActivity, "Capture Succeeded", Toast.LENGTH_SHORT)
-//                        .show()
                 }
             }
         )
