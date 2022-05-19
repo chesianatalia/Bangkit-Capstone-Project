@@ -1,28 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="right"
     android:background="@drawable/pagebackground">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
         tools:context=".HomepageActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_homepage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            >
+
+            <ImageView
+                android:id="@+id/btn_histories"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_history_24" />
+
+            <TextView
+                android:id="@+id/title_apk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/nama_apk"
+                android:textColor="@color/black"
+                android:textSize="36sp" />
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="40dp"
             app:cardCornerRadius="20dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tb_homepage">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -33,86 +62,83 @@
                     android:id="@+id/img_User"
                     android:layout_width="92dp"
                     android:layout_height="92dp"
+                    android:background="#000000"
+                    android:padding="1dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars"
-                    android:background="#000000"
-                    android:padding="1dp"/>
+                    tools:src="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/tv_userName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="3dp"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="3dp"
+                    app:layout_constraintEnd_toStartOf="@+id/img_User"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/img_User"
                     tools:text="Username" />
 
                 <TextView
                     android:id="@+id/tv_userPhoneNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="3dp"
                     android:fontFamily="@font/poppins_regular"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginEnd="3dp"
+                    app:layout_constraintEnd_toStartOf="@+id/img_User"
                     app:layout_constraintStart_toStartOf="@id/tv_userName"
                     app:layout_constraintTop_toBottomOf="@id/tv_userName"
-                    app:layout_constraintEnd_toStartOf="@+id/img_User"
-                    tools:text="PhoneNumber"/>
+                    tools:text="PhoneNumber" />
 
                 <TextView
                     android:id="@+id/tv_userEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
                     android:fontFamily="@font/poppins_regular"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:layout_marginEnd="3dp"
+                    app:layout_constraintEnd_toStartOf="@+id/img_User"
                     app:layout_constraintStart_toStartOf="@+id/tv_userPhoneNumber"
                     app:layout_constraintTop_toBottomOf="@+id/tv_userPhoneNumber"
-                    app:layout_constraintEnd_toStartOf="@+id/img_User"
-                    tools:text="Email"/>
+                    tools:text="Email" />
 
                 <View
                     android:id="@+id/line_cardView"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/black"
                     android:layout_marginTop="7dp"
+                    android:background="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_User"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/img_User" />
 
                 <ImageView
                     android:id="@+id/img_points"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/poinicon"
-                    app:layout_constraintTop_toBottomOf="@+id/line_cardView"
                     android:layout_marginTop="7dp"
+                    android:src="@drawable/poinicon"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/line_cardView" />
 
                 <TextView
                     android:id="@+id/tv_userPoint"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="7dp"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginStart="11dp"
                     app:layout_constraintStart_toEndOf="@id/img_points"
                     app:layout_constraintTop_toBottomOf="@+id/line_cardView"
-                    tools:text="10.000 points"
-                    />
+                    tools:text="10.000 points" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -174,7 +200,9 @@
             android:id="@+id/maps"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/rectangle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_booth_location" />
@@ -188,17 +216,19 @@
             android:text="@string/info_terbaru"
             android:textAlignment="center"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/maps"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/maps" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="140dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/rectangle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_info"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
