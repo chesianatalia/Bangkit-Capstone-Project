@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">BangkitCapstoneProject</string>
-
-    <string name="nama_apk">REPLASC</string>
+    <string name="nama_apk">rePlasc</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="bt_login">Login</string>
@@ -25,4 +24,15 @@
     <string name="hapus_akun">Delete Account</string>
     <string name="kredit">Credit</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="tv_edtProfile">Edit Profile</string>
+    <string name="tv_editname">Name</string>
+    <string name="tv_editemail">Email</string>
+    <string name="hint_editnotelp">Phone Number</string>
+    <string name="edt_editalamat">Address</string>
+    <string name="hint_edtname">Name</string>
+    <string name="hint_edtemail">Email</string>
+    <string name="tv_editalamat">Address</string>
+    <string name="tv_editnotelp">Phone Number</string>
+    <string name="bt_konfirmasiedit">Confirmation</string>
+    <string name="bt_googlesignin">Google Sign-in</string>
 </resources>
