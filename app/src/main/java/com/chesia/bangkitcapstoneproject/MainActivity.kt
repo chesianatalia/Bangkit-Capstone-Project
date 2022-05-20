@@ -13,8 +13,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.LoginResponse
-import android.view.WindowInsets
-import android.view.WindowManager
 import com.chesia.bangkitcapstoneproject.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
