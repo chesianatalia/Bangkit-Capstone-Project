@@ -36,4 +36,8 @@
     <string name="tv_editnotelp">No.telepon/Handphone</string>
     <string name="bt_konfirmasiedit">Konfirmasi</string>
     <string name="bt_googlesignin">Google Sign-in</string>
+    <string name="halaman_utama">Halaman Utama</string>
+    <string name="market">Market</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="log_out">Log Out</string>
 </resources>

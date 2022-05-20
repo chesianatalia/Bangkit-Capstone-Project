@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         }else{
-                            Toast.makeText(this@MainActivity, "An error occurred", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, "Email or password wrong", Toast.LENGTH_SHORT).show()
                         }
                     }
 
