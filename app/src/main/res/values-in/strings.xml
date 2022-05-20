@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BangkitCapstoneProject</string>
-    <string name="nama_apk">rePlasc</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">password</string>
-    <string name="bt_login">Login</string>
-<<<<<<< Updated upstream
+    <string name="nama_apk">REPLASC</string>
+    <string name="hint_email">Surel</string>
+    <string name="hint_password">Kata Sandi</string>
+    <string name="bt_login">Masuk</string>
     <string name="tv_register"><u>Belum punya akun?</u></string>
     <string name="hint_telp">No. Telepon/Handphone</string>
     <string name="hint_name">Nama</string>
@@ -14,36 +14,26 @@
     <string name="sudah_buang_sampahkah_hari_ini"><u>Sudah Buang Sampahkah Hari Ini?</u></string>
     <string name="lokasi_spesial_booth_terdekat"><u>Lokasi Spesial Booth Terdekat</u></string>
     <string name="info_terbaru"><u>Info Terbaru</u></string>
-=======
-    <string name="tv_register"><u>Create an account</u></string>
-    <string name="hint_telp">Phone Number</string>
-    <string name="hint_name">Name</string>
-    <string name="tv_daftarAkun">Register</string>
-    <string name="hint_konfirmasiPassword">Password Confirmation</string>
-    <string name="pindai_sampah">Scan trash</string>
-    <string name="sudah_buang_sampahkah_hari_ini"><u>Did you take out the trash today?</u></string>
-    <string name="lokasi_spesial_booth_terdekat"><u>Nearest Booth Location</u></string>
-    <string name="info_terbaru"><u>Lastest News</u></string>
->>>>>>> Stashed changes
-    <string name="historytitle">History</string>
-    <string name="usertext">User</string>
-    <string name="edit_profile">Edit Profile</string>
+    <string name="historytitle">Riwayat</string>
+    <string name="usertext">Pengguna</string>
+    <string name="edit_profile">Edit Profil</string>
     <string name="ubah_pin">Ubah Pin</string>
-    <string name="general_text">General</string>
+    <string name="general_text">Umum</string>
     <string name="bahasa">Bahasa</string>
     <string name="tema">Tema</string>
-    <string name="kode_refferal">Kode Refferal</string>
+    <string name="kode_refferal">Kode Referal</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="hapus_akun">Hapus Akun</string>
+    <string name="kredit">Kredit</string>
     <string name="tv_edtProfile">Edit Profil</string>
     <string name="tv_editname">Nama</string>
     <string name="tv_editemail">Email</string>
-    <string name="hint_editnotelp">No. telp</string>
+    <string name="hint_editnotelp">No. Telepon/Handphone</string>
     <string name="edt_editalamat">Alamat</string>
-    <string name="hint_edtname">Name</string>
-    <string name="hint_edtemail">Email</string>
+    <string name="hint_edtname">Nama</string>
+    <string name="hint_edtemail">Surel</string>
     <string name="tv_editalamat">Alamat</string>
-    <string name="tv_editnotelp">No. telp</string>
+    <string name="tv_editnotelp">No.telepon/Handphone</string>
     <string name="bt_konfirmasiedit">Konfirmasi</string>
     <string name="bt_googlesignin">Google Sign-in</string>
 </resources>
