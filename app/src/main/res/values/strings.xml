@@ -4,7 +4,16 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="bt_login">Login</string>
-<!--    <string name="tv_register"><u>Doesn't have account?</u></string>-->
+    <string name="tv_register"><u>Belum punya akun?</u></string>
+    <string name="hint_telp">No. Telepon/Handphone</string>
+    <string name="hint_name">Nama</string>
+    <string name="tv_daftarAkun">Daftar Akun</string>
+    <string name="hint_konfirmasiPassword">Konfirmasi password</string>
+    <string name="pindai_sampah">Pindai Sampah</string>
+    <string name="sudah_buang_sampahkah_hari_ini"><u>Sudah Buang Sampahkah Hari Ini?</u></string>
+    <string name="lokasi_spesial_booth_terdekat"><u>Lokasi Spesial Booth Terdekat</u></string>
+    <string name="info_terbaru"><u>Info Terbaru</u></string>
+    <string name="tv_register"><u>Create an account</u></string>
     <string name="hint_telp">Phone Number</string>
     <string name="hint_name">Name</string>
     <string name="tv_daftarAkun">Register</string>

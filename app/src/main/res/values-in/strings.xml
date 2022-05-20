@@ -5,7 +5,7 @@
     <string name="hint_email">Surel</string>
     <string name="hint_password">Kata Sandi</string>
     <string name="bt_login">Masuk</string>
-<!--    <string name="tv_register"><u>Belum punya akun?</u></string>-->
+    <string name="tv_register"><u>Belum punya akun?</u></string>
     <string name="hint_telp">No. Telepon/Handphone</string>
     <string name="hint_name">Nama</string>
     <string name="tv_daftarAkun">Daftar Akun</string>
