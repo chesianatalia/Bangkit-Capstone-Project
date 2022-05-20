@@ -2,19 +2,19 @@ package com.chesia.bangkitcapstoneproject
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-<<<<<<< Updated upstream
-=======
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.LoginResponse
->>>>>>> Stashed changes
+import android.view.WindowInsets
+import android.view.WindowManager
 import com.chesia.bangkitcapstoneproject.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,10 +30,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btLogin.setOnClickListener {
-<<<<<<< Updated upstream
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-=======
             hideSoftKeyboard(binding.root)
             setProgressBar(true)
             if(binding.edtEmail.text.isNotEmpty() && binding.edtPassword.text.isNotEmpty()){
@@ -63,21 +59,16 @@ class MainActivity : AppCompatActivity() {
                 setProgressBar(false)
                 Toast.makeText(this, "Tolong isi semua form!", Toast.LENGTH_SHORT).show()
             }
-
->>>>>>> Stashed changes
         }
-//             val intent = Intent(this, HomepageActivity::class.java)
-//             startActivity(intent)
-//         }
+
+        setupView()
     }
+
 
     fun intentRegister(view: View) {
         val intent = Intent(this@MainActivity, RegisterActivity::class.java)
         startActivity(intent);
     }
-<<<<<<< Updated upstream
-=======
-
 
     private fun setupView() {
         @Suppress("DEPRECATION")
@@ -106,5 +97,4 @@ class MainActivity : AppCompatActivity() {
             binding.pbLogin.visibility = View.GONE
         }
     }
->>>>>>> Stashed changes
 }

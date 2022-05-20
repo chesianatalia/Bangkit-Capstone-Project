@@ -54,8 +54,7 @@
         app:layout_constraintStart_toStartOf="@+id/edt_email"
         app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
-<<<<<<< Updated upstream
-=======
+
     <!--    <TextView-->
 <!--        android:id="@+id/tv_register"-->
 <!--        android:layout_width="wrap_content"-->
@@ -71,7 +70,6 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/bt_login"-->
 <!--        app:layout_constraintVertical_bias="0.111"/>-->
 <!--        android:onClick="intentRegister"-->
->>>>>>> Stashed changes
     <Button
         android:id="@+id/bt_login"
         android:layout_width="0dp"
@@ -85,6 +83,21 @@
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toBottomOf="@+id/edt_password" />
 
+<!--    <TextView-->
+<!--        android:id="@+id/tv_register"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="@string/tv_register"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/logo"-->
+<!--        app:layout_constraintHorizontal_bias="0.506"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/logo"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/bt_login"-->
+<!--        app:layout_constraintVertical_bias="0.111"/>-->
+<!--        android:onClick="intentRegister"-->
     <Button
         android:id="@+id/bt_login3"
         android:layout_width="0dp"
@@ -104,23 +117,11 @@
         android:id="@+id/tv_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-        android:layout_marginTop="20dp"
-=======
         android:layout_marginTop="36dp"
->>>>>>> Stashed changes
         android:clickable="true"
         android:focusable="true"
         android:onClick="intentRegister"
         android:text="@string/tv_register"
-<<<<<<< Updated upstream
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/logo"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/logo"
-        app:layout_constraintTop_toBottomOf="@+id/bt_login"
-        app:layout_constraintVertical_bias="0.529" />
-=======
         app:layout_constraintEnd_toEndOf="@+id/bt_login3"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/bt_login3"
@@ -136,7 +137,5 @@
         app:layout_constraintEnd_toEndOf="@+id/logo"
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
-
->>>>>>> Stashed changes
-
+  
 </androidx.constraintlayout.widget.ConstraintLayout>
