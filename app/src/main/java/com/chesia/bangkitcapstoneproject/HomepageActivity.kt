@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
+import com.google.android.material.navigation.NavigationView
 
 class HomepageActivity : AppCompatActivity() {
 
@@ -60,6 +61,10 @@ class HomepageActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+
 
 //        toggle = actionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
 
