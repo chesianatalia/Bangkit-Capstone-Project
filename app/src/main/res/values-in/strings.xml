@@ -5,7 +5,7 @@
     <string name="hint_email">Surel</string>
     <string name="hint_password">Kata Sandi</string>
     <string name="bt_login">Masuk</string>
-<!--    <string name="tv_register"><u>Belum punya akun?</u></string>-->
+    <string name="tv_register"><u>Belum punya akun?</u></string>
     <string name="hint_telp">No. Telepon/Handphone</string>
     <string name="hint_name">Nama</string>
     <string name="tv_daftarAkun">Daftar Akun</string>
@@ -36,4 +36,8 @@
     <string name="tv_editnotelp">No.telepon/Handphone</string>
     <string name="bt_konfirmasiedit">Konfirmasi</string>
     <string name="bt_googlesignin">Google Sign-in</string>
+    <string name="halaman_utama">Halaman Utama</string>
+    <string name="market">Market</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="log_out">Log Out</string>
 </resources>
