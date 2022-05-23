@@ -73,8 +73,6 @@ class CameraActivity : AppCompatActivity() {
 
         val photoFile = createFile(application)
 
-        val origin = intent.getIntExtra("origin", 0)
-
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
         imageCapture.takePicture(
             outputOptions,
@@ -89,7 +87,7 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val intent = Intent(this@CameraActivity, PhotoResultListActivity::class.java)
+                    val intent = Intent(this@CameraActivity, PhotoResult::class.java)
                     intent.putExtra("picture", photoFile)
                     intent.putExtra("isBackCamera",
                     cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
