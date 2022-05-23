@@ -52,6 +52,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
+    implementation 'com.google.code.gson:gson:2.8.6'
+
     implementation "androidx.camera:camera-camera2:${camerax_version}"
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     implementation "androidx.camera:camera-view:${camerax_version}"
