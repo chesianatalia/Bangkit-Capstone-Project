@@ -33,15 +33,13 @@
                     android:layout_gravity="start"
                     android:src="@drawable/ic_baseline_history_24" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/title_apk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/nama_apk"
-                    android:textColor="@color/black"
-                    android:textSize="36sp" />
+                    android:src="@drawable/replasc_logo_horizon"/>
+
 
                 <ImageView
                     android:layout_width="30dp"
@@ -57,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="17dp"
                 android:layout_marginEnd="40dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"

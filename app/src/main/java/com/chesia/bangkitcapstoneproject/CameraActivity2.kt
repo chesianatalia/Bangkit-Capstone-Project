@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat
 import com.chesia.bangkitcapstoneproject.databinding.ActivityCameraBinding
 import java.lang.Exception
 
-class CameraActivity : AppCompatActivity() {
+class CameraActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
 
     private var imageCapture: ImageCapture? = null
@@ -60,7 +60,7 @@ class CameraActivity : AppCompatActivity() {
                 )
             } catch (exc: Exception) {
                 Toast.makeText(
-                    this@CameraActivity,
+                    this@CameraActivity2,
                     "Failed to launch the camera.",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -82,19 +82,19 @@ class CameraActivity : AppCompatActivity() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Toast.makeText(
-                        this@CameraActivity,
+                        this@CameraActivity2,
                         "Capture Failed",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val intent = Intent(this@CameraActivity, PhotoResultListActivity::class.java)
+                    val intent = Intent()
                     intent.putExtra("picture", photoFile)
                     intent.putExtra("isBackCamera",
                     cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
                     setResult(PhotoResult.CAMERA_X_RESULT, intent)
-                    startActivity(intent)
+                    finish();
                 }
             }
         )
