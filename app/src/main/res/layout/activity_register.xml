@@ -8,7 +8,7 @@
     tools:context=".RegisterActivity">
 
     <Button
-        android:id="@+id/bt_login2"
+        android:id="@+id/bt_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -114,4 +114,15 @@
         app:layout_constraintEnd_toEndOf="@+id/edt_registerNama"
         app:layout_constraintStart_toStartOf="@+id/edt_registerNama"
         app:layout_constraintTop_toBottomOf="@+id/edt_registerPassword" />
+
+    <ProgressBar
+        android:id="@+id/pb_register"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bt_register"
+        app:layout_constraintEnd_toEndOf="@+id/edt_registerPassword2"
+        app:layout_constraintStart_toStartOf="@+id/edt_registerPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/edt_registerPassword2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
