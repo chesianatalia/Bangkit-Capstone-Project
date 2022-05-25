@@ -86,9 +86,9 @@ class HomepageActivity : AppCompatActivity() {
 //        toggle.syncState()
 
 
-        toggle.isDrawerIndicatorEnabled = true
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+//        toggle.isDrawerIndicatorEnabled = true
+//        drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
 
 
     }

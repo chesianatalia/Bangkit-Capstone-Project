@@ -42,4 +42,5 @@
     <string name="log_out">Log Out</string>
     <string name="open">buka</string>
     <string name="close">tutup</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

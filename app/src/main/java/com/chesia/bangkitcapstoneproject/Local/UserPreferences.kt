@@ -23,10 +23,7 @@ class UserPreferences (context: Context) {
         editor.apply()
 
     }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     companion object{
         private const val PREFS_NAME = "user_pref"
         private const val TOKEN = "token"
