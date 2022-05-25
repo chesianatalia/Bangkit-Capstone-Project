@@ -45,6 +45,7 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.tbHomepage)
 
         mPreferences = UserPreferences(this)
 
@@ -69,21 +70,30 @@ class HomepageActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
+        val toolbar: androidx.appcompat.widget.Toolbar = binding.tbHomepage
 
 
-<<<<<<< Updated upstream
+
 //        toggle = actionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
-=======
+
 //        toggle = actionBarDrawerToggle(this, drawerLayout, binding.menu, R.string.open, R.string.close)
+
 
 
 
 //        toggle.isDrawerIndicatorEnabled = true
 //        drawerLayout.addDrawerListener(toggle)
 //        toggle.syncState()
->>>>>>> Stashed changes
+
+
+        toggle.isDrawerIndicatorEnabled = true
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
 
     }
+
+
 
     companion object {
         const val CAMERA_X_RESULT = 200

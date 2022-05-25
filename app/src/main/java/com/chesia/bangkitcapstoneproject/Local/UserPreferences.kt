@@ -1,5 +1,4 @@
 package com.chesia.bangkitcapstoneproject.Local
-
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -8,52 +7,30 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import com.chesia.bangkitcapstoneproject.Networking.LoginResponseData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import android.content.Context
+class UserPreferences (context: Context){
 
-class UserPreferences private constructor(private val dataStore: DataStore<Preferences>){
+    private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    val editor = preferences.edit()
 
-    //gangerti endpoint + butuh state
-    fun getUser(): Flow<LoginResponseData> {
-        return dataStore.data.map { preferences ->
-            LoginResponseData(
-                preferences[tokenKey] ?: "",
-                preferences[endPoint] ?:""
-
-            )
-        }
-    }
-
-    suspend fun saveUser(loginResponseData: LoginResponseData){
-        dataStore.edit{preferences ->
-            preferences[tokenKey] = loginResponseData.token
-            preferences[endPoint] = loginResponseData.endpoint
-        }
-    }
-
-<<<<<<< Updated upstream
-    companion object {
-        @Volatile
-        private var instance: UserPreferences? = null
-
-        private val tokenKey = stringPreferencesKey("token")
-        private val endPoint = stringPreferencesKey("state_login")
-=======
-    fun clearPreference(){
-        editor.clear()
+    fun setToken(value: String){
+        editor.putString(TOKEN, value)
         editor.apply()
     }
+
+    fun getToken(): String{
+        val token: String = if(preferences.getString(TOKEN, "") != null) preferences.getString(TOKEN, "")!! else ""
+        return token
+
+    }
+  fun clearPreference(){
+        editor.clear()
+        editor.apply()
+
+
 
     companion object{
         private const val PREFS_NAME = "user_pref"
         private const val TOKEN = "token"
-    }
->>>>>>> Stashed changes
-
-        fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {
-            return instance ?: synchronized(this) {
-                val userPreference = UserPreferences(dataStore)
-                instance = userPreference
-                userPreference
-            }
-        }
     }
 }
