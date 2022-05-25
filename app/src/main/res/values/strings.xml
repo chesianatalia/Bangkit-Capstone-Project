@@ -40,4 +40,6 @@
     <string name="pengaturan">Settings</string>
     <string name="log_out">Log Out</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>

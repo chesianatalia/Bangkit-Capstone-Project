@@ -40,4 +40,6 @@
     <string name="market">Market</string>
     <string name="pengaturan">Pengaturan</string>
     <string name="log_out">Log Out</string>
+    <string name="open">buka</string>
+    <string name="close">tutup</string>
 </resources>

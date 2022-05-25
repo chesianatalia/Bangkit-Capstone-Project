@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.chesia.bangkitcapstoneproject.Local.UserPreferences
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -17,6 +18,7 @@ class HomepageActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomepageBinding
     private lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var mPreferences: UserPreferences
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -43,6 +45,9 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.tbHomepage)
+
+        mPreferences = UserPreferences(this)
 
         binding.btnScan.setOnClickListener{
             val Intent = Intent(this, CameraActivity::class.java)
@@ -58,17 +63,37 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         binding.btnHistories.setOnClickListener{
-            val intent = Intent(this, SettingsActivity::class.java)
+            mPreferences.clearPreference()
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
+        val toolbar: androidx.appcompat.widget.Toolbar = binding.tbHomepage
+
 
 
 //        toggle = actionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
 
+//        toggle = actionBarDrawerToggle(this, drawerLayout, binding.menu, R.string.open, R.string.close)
+
+
+
+
+//        toggle.isDrawerIndicatorEnabled = true
+//        drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
+
+
+        toggle.isDrawerIndicatorEnabled = true
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+
     }
+
+
 
     companion object {
         const val CAMERA_X_RESULT = 200
