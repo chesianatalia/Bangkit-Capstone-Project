@@ -5,10 +5,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
@@ -43,11 +47,13 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.tbHomepage)
+        setSupportActionBar(binding.toolbar)
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         binding.btnScan.setOnClickListener{
-            val Intent = Intent(this, CameraActivity::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
 
             if (!allPermissionsGranted()) {
                 ActivityCompat.requestPermissions(
@@ -58,24 +64,42 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnHistories.setOnClickListener{
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.btnHistories.setOnClickListener{
+//            val intent = Intent(this, SettingsActivity::class.java)
+//            startActivity(intent)
+//        }
+
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val toolbar: androidx.appcompat.widget.Toolbar = binding.tbHomepage
+        val toolBar : Toolbar = binding.toolbar
 
+//        ViewCompat.setLayoutDirection(toolBar, ViewCompat.LAYOUT_DIRECTION_RTL)
 
-//        toggle = actionBarDrawerToggle(this, drawerLayout, binding.menu, R.string.open, R.string.close)
-
+        toggle = ActionBarDrawerToggle(this, drawerLayout,toolBar, R.string.open, R.string.close)
+        toggle.drawerArrowDrawable.color = resources.getColor(R.color.black)
 
 
         toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        navView.itemIconTintList = null
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
+                R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
+            }
+            true
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

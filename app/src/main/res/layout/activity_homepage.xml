@@ -18,38 +18,39 @@
             android:layout_height="wrap_content"
             tools:context=".HomepageActivity">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tb_homepage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/btn_histories"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/ic_baseline_history_24" />
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/btn_histories"-->
+                    <!--                        android:layout_width="30dp"-->
+                    <!--                        android:layout_height="30dp"-->
+                    <!--                        android:layout_gravity="start"-->
+                    <!--                        android:src="@drawable/ic_baseline_history_24" />-->
 
-                <ImageView
-                    android:id="@+id/title_apk"
-                    android:layout_width="200dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/replasc_logo_horizon"/>
+                    <ImageView
+                        android:id="@+id/title_apk"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/replasc_logo_horizon" />
 
 
-                <ImageView
-                    android:id="@+id/menu"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/ic_baseline_menu_24" />
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/menu"-->
+                    <!--                        android:layout_width="30dp"-->
+                    <!--                        android:layout_height="30dp"-->
+                    <!--                        android:layout_gravity="end"-->
+                    <!--                        android:layout_marginEnd="15dp"-->
+                    <!--                        android:src="@drawable/ic_baseline_menu_24" />-->
 
-            </androidx.appcompat.widget.Toolbar>
+                </androidx.appcompat.widget.Toolbar>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_profile"
@@ -61,7 +62,7 @@
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tb_homepage">
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -249,8 +250,8 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/nav_menu"
-        android:layout_gravity="end"
-        android:fitsSystemWindows="true"/>
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
