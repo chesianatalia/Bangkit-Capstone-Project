@@ -6,13 +6,17 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
+import com.google.android.material.navigation.NavigationView
 
 class HomepageActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomepageBinding
+    private lateinit var toggle : ActionBarDrawerToggle
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -53,10 +57,17 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
 
-        binding.imgUser.setOnClickListener{
+        binding.btnHistories.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+
+
+//        toggle = actionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+
     }
 
     companion object {
