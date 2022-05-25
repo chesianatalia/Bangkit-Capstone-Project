@@ -29,12 +29,24 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
+<<<<<<< Updated upstream
     companion object {
         @Volatile
         private var instance: UserPreferences? = null
 
         private val tokenKey = stringPreferencesKey("token")
         private val endPoint = stringPreferencesKey("state_login")
+=======
+    fun clearPreference(){
+        editor.clear()
+        editor.apply()
+    }
+
+    companion object{
+        private const val PREFS_NAME = "user_pref"
+        private const val TOKEN = "token"
+    }
+>>>>>>> Stashed changes
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {
             return instance ?: synchronized(this) {
