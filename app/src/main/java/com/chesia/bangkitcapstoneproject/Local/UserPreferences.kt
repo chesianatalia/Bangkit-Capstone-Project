@@ -1,4 +1,5 @@
 package com.chesia.bangkitcapstoneproject.Local
+
 import android.content.Context
 
 class UserPreferences (context: Context){
