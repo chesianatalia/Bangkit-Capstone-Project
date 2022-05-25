@@ -55,15 +55,11 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
-    implementation 'com.google.code.gson:gson:2.8.6'
 
-<<<<<<< Updated upstream
-=======
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
 
-
->>>>>>> Stashed changes
     implementation "androidx.camera:camera-camera2:${camerax_version}"
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     implementation "androidx.camera:camera-view:${camerax_version}"
