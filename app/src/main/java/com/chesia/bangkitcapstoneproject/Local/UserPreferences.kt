@@ -1,10 +1,6 @@
 package com.chesia.bangkitcapstoneproject.Local
 
 import android.content.Context
-<<<<<<< Updated upstream
-=======
-class UserPreferences (context: Context) {
->>>>>>> Stashed changes
 
 class UserPreferences (context: Context) {
     private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -25,13 +21,9 @@ class UserPreferences (context: Context) {
     fun clearPreference() {
         editor.clear()
         editor.apply()
-<<<<<<< Updated upstream
-    }
-
-=======
 
     }
->>>>>>> Stashed changes
+
     companion object{
         private const val PREFS_NAME = "user_pref"
         private const val TOKEN = "token"
