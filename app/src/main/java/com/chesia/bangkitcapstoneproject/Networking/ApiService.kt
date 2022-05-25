@@ -21,4 +21,11 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+    @FormUrlEncoded
+    @POST("sign-in")
+    fun loginwithgoogle(
+        @Field("email") email: String,
+        @Field("token") token: String
+    ): Call<LoginResponse>
 }
