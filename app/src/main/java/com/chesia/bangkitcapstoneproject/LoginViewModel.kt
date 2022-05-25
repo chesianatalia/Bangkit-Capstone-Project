@@ -9,13 +9,13 @@ import com.chesia.bangkitcapstoneproject.Networking.LoginResponseData
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val pref: UserPreferences) : ViewModel(){
-    fun saveUser(user:LoginResponseData){
-        viewModelScope.launch{
-            pref.saveUser(LoginResponseData(user.token,user.endpoint))
-        }
-    }
-
-    fun getUser(): LiveData<LoginResponseData>{
-        return pref.getUser().asLiveData()
-    }
+//    fun saveToken(user:LoginResponseData){
+//        viewModelScope.launch{
+//            pref.saveUser(LoginResponseData(user.token,user.endpoint))
+//        }
+//    }
+//
+//    fun getUser(): LiveData<LoginResponseData>{
+//        return pref.getUser().asLiveData()
+//    }
 }
