@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.chesia.bangkitcapstoneproject.Local.UserPreferences
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -21,6 +22,7 @@ class HomepageActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomepageBinding
     private lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var mPreferences: UserPreferences
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -51,6 +53,8 @@ class HomepageActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        mPreferences = UserPreferences(this)
+
         binding.btnScan.setOnClickListener{
             val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
@@ -65,7 +69,8 @@ class HomepageActivity : AppCompatActivity() {
         }
 
 //        binding.btnHistories.setOnClickListener{
-//            val intent = Intent(this, SettingsActivity::class.java)
+//              mPreferences.clearPreference()
+//            val intent = Intent(this, MainActivity::class.java)
 //            startActivity(intent)
 //        }
 
@@ -76,13 +81,17 @@ class HomepageActivity : AppCompatActivity() {
 
 //        ViewCompat.setLayoutDirection(toolBar, ViewCompat.LAYOUT_DIRECTION_RTL)
 
+
         toggle = ActionBarDrawerToggle(this, drawerLayout,toolBar, R.string.open, R.string.close)
         toggle.drawerArrowDrawable.color = resources.getColor(R.color.black)
 
 
-        toggle.isDrawerIndicatorEnabled = true
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+
+       toggle.isDrawerIndicatorEnabled = true
+       drawerLayout.addDrawerListener(toggle)
+       toggle.syncState()
+
+
 
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener {

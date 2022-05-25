@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622101842770",
+    "project_id": "capstone-ioh",
+    "storage_bucket": "capstone-ioh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622101842770:android:b85c5e99c6a8ae5a0b488b",
+        "android_client_info": {
+          "package_name": "com.chesia.bangkitcapstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622101842770-ks9dtls9vrv9ukssg5aqljgtgqpr8bva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKaV2rxIT186oajLHgqlaZ21O_ajyHK4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622101842770-ks9dtls9vrv9ukssg5aqljgtgqpr8bva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

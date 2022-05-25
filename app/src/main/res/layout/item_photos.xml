@@ -3,12 +3,10 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
-    android:layout_width="match_parent"
+    android:layout_width="290dp"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginRight="8dp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="16dp"
     android:layout_marginBottom="4dp"
     card_view:cardCornerRadius="4dp">
 
@@ -20,12 +18,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="286dp"
+        android:layout_height="292dp"
         android:padding="8dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="359dp"
+            android:layout_width="250dp"
             android:layout_height="198dp"
             android:layout_marginTop="16dp"
             card_view:cardCornerRadius="20dp"
@@ -45,18 +43,20 @@
             android:id="@+id/tv_photoDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="[date]"
-            card_view:layout_constraintStart_toStartOf="@+id/cardView"
+            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <TextView
             android:id="@+id/tv_photoTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="[time]"
-            card_view:layout_constraintStart_toStartOf="@+id/cardView"
+            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_photoDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
