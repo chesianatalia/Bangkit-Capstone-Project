@@ -11,6 +11,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.chesia.bangkitcapstoneproject.Local.UserPreferences
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.LoginResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityMainBinding
@@ -21,11 +22,20 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mPreferences: UserPreferences;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mPreferences = UserPreferences(this);
+
+        if(mPreferences.getToken() != ""){
+            startActivity(Intent(this@MainActivity, HomepageActivity::class.java));
+            finish()
+        }
+        Log.d("mToken", mPreferences.getToken());
+
 
         binding.btLogin.setOnClickListener {
             hideSoftKeyboard(binding.root)
@@ -39,6 +49,8 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         setProgressBar(false)
                         if(response.isSuccessful && response.body()!!.data != null){
+                            mPreferences.setToken(response.body()!!.data!!.token)
+                            Log.d("respToken", response.body()!!.data!!.token)
                             val intent = Intent(this@MainActivity, HomepageActivity::class.java);
                             startActivity(intent)
                             finish()
