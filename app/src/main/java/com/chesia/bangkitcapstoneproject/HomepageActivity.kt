@@ -83,7 +83,6 @@ class HomepageActivity : AppCompatActivity() {
 
 
         toggle = ActionBarDrawerToggle(this, drawerLayout,toolBar, R.string.open, R.string.close)
-        toggle.drawerArrowDrawable.color = resources.getColor(R.color.black)
 
 
 
@@ -98,6 +97,7 @@ class HomepageActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
                 R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
+                R.id.log_out -> logOut()
             }
             true
         }
@@ -109,6 +109,12 @@ class HomepageActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logOut(){
+        mPreferences.clearPreference()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 
