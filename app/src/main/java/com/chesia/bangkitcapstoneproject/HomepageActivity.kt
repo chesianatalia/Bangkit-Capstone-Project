@@ -6,6 +6,12 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+<<<<<<< Updated upstream
+=======
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
+>>>>>>> Stashed changes
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -49,9 +55,17 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
+
         setSupportActionBar(binding.toolbar)
 
         mPreferences = UserPreferences(this)
+
+        binding.btnHistories.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnScan.setOnClickListener{
             val intent = Intent(this, CameraActivity::class.java)
@@ -73,8 +87,6 @@ class HomepageActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val toolBar : Toolbar = binding.toolbar
-
-//        ViewCompat.setLayoutDirection(toolBar, ViewCompat.LAYOUT_DIRECTION_RTL)
 
 
         toggle = ActionBarDrawerToggle(this, drawerLayout,toolBar, R.string.open, R.string.close)
@@ -106,10 +118,16 @@ class HomepageActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+<<<<<<< Updated upstream
     private fun logOut(){
         mPreferences.clearPreference()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+=======
+    fun logout(){
+        mPreferences.clearPreference()
+        startActivity(Intent(this, MainActivity::class.java))
+>>>>>>> Stashed changes
     }
 
 
