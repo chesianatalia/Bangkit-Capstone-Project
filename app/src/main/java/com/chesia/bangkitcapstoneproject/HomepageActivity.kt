@@ -51,8 +51,6 @@ class HomepageActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-
         mPreferences = UserPreferences(this)
 
         binding.btnScan.setOnClickListener{
@@ -68,12 +66,9 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
 
-//        binding.btnHistories.setOnClickListener{
-//              mPreferences.clearPreference()
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
