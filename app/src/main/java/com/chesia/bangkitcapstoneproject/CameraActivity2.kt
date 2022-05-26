@@ -124,9 +124,6 @@ class CameraActivity2 : AppCompatActivity() {
             finish();
         }
     }
-//            binding.previewImageView.setImageURI(selectedImg)
-        }
-    }
     private fun flash() {
 
     }
