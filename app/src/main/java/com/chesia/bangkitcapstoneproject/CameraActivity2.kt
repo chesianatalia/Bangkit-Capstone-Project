@@ -1,12 +1,14 @@
 package com.chesia.bangkitcapstoneproject
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -30,6 +32,7 @@ class CameraActivity2 : AppCompatActivity() {
 
         binding.captureImage.setOnClickListener { takePhoto() }
         binding.flash.setOnClickListener { flash() }
+        binding.Gallery.setOnClickListener { openGallery() }
     }
 
     public override fun onResume() {
@@ -93,13 +96,30 @@ class CameraActivity2 : AppCompatActivity() {
                     intent.putExtra("picture", photoFile)
                     intent.putExtra("isBackCamera",
                     cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
-                    setResult(PhotoResult.CAMERA_X_RESULT, intent)
+                    setResult(PhotoResultListActivity.CAMERA_X_RESULT, intent)
                     finish();
                 }
             }
         )
     }
 
+    private fun openGallery(){
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+            val myFile = uriToFile(selectedImg, this)
+//            binding.previewImageView.setImageURI(selectedImg)
+        }
+    }
 
     private fun flash() {
 

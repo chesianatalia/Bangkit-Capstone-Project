@@ -23,19 +23,21 @@
         android:id="@+id/cameraXButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/custom_button2"
         android:elevation="2dp"
+        android:padding="8dp"
         android:scaleType="fitCenter"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/rv_photos"
-        app:layout_constraintTop_toBottomOf="@+id/rv_photos"
+        app:layout_constraintTop_toBottomOf="@+id/line_cardView"
         app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_photos"
         android:layout_width="wrap_content"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_marginBottom="5dp"
 
         app:layout_constraintBottom_toTopOf="@+id/cameraXButton2"
