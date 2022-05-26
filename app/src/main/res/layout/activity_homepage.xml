@@ -137,6 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
+                        android:layout_marginEnd="7dp"
                         android:src="@drawable/poinicon"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/line_cardView" />
@@ -255,6 +256,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu"
+        android:background="@drawable/custom_button3"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
