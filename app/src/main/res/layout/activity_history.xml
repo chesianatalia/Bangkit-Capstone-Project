@@ -7,6 +7,16 @@
     tools:context=".HistoryActivity"
     android:background="@drawable/pagebackground">
 
+    <ImageView
+        android:id="@+id/btn_back_history"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_historytitle"
+        app:layout_constraintBottom_toBottomOf="@id/tv_historytitle"
+        android:src="@drawable/ic_baseline_arrow_back_24"/>
+
     <TextView
         android:id="@+id/tv_historytitle"
         android:layout_width="match_parent"

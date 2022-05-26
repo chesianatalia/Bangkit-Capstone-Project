@@ -1,5 +1,6 @@
 package com.chesia.bangkitcapstoneproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHistoryBinding
@@ -13,5 +14,10 @@ class HistoryActivity : AppCompatActivity() {
 
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnBackHistory.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

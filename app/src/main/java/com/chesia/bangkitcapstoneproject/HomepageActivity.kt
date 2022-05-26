@@ -3,12 +3,20 @@ package com.chesia.bangkitcapstoneproject
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.chesia.bangkitcapstoneproject.Local.UserPreferences
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
@@ -45,13 +53,21 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.tbHomepage)
+
+        window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
+
+        setSupportActionBar(binding.toolbar)
 
         mPreferences = UserPreferences(this)
 
+        binding.btnHistories.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnScan.setOnClickListener{
-            val Intent = Intent(this, CameraActivity::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
 
             if (!allPermissionsGranted()) {
                 ActivityCompat.requestPermissions(
@@ -61,31 +77,31 @@ class HomepageActivity : AppCompatActivity() {
                 )
             }
         }
+        setupView()
 
-        binding.btnHistories.setOnClickListener{
-            mPreferences.clearPreference()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val toolbar: androidx.appcompat.widget.Toolbar = binding.tbHomepage
+        val toolBar : Toolbar = binding.toolbar
+
+
+        toggle = ActionBarDrawerToggle(this, drawerLayout,toolBar, R.string.open, R.string.close)
+        toggle.drawerArrowDrawable.color = resources.getColor(R.color.black)
 
 
 
-//        toggle = actionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
-
-//        toggle = actionBarDrawerToggle(this, drawerLayout, binding.menu, R.string.open, R.string.close)
-
-
+       toggle.isDrawerIndicatorEnabled = true
+       drawerLayout.addDrawerListener(toggle)
+       toggle.syncState()
 
 
-<<<<<<< Updated upstream
+
 //        toggle.isDrawerIndicatorEnabled = true
 //        drawerLayout.addDrawerListener(toggle)
 //        toggle.syncState()
-=======
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -95,16 +111,34 @@ class HomepageActivity : AppCompatActivity() {
             }
             true
         }
->>>>>>> Stashed changes
+        
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
-        toggle.isDrawerIndicatorEnabled = true
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
+    private fun logOut(){
+        mPreferences.clearPreference()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
 
     }
 
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+    }
 
 
     companion object {

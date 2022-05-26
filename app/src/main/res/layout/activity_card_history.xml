@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="17dp"
-    cardview:cardCornerRadius="20dp"
-    cardview:cardBackgroundColor="@color/Grove2">
+    cardview:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +14,8 @@
         android:paddingStart="17dp"
         android:paddingTop="7dp"
         android:paddingEnd="17dp"
-        android:paddingBottom="21dp">
+        android:paddingBottom="21dp"
+        android:background="@drawable/custom_button3">
 
         <TextView
             android:id="@+id/tv_status"
