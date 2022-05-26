@@ -2,6 +2,7 @@ package com.chesia.bangkitcapstoneproject
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -62,7 +63,7 @@ class PhotoResultListActivity : AppCompatActivity() {
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        if (it.resultCode == PhotoResult.CAMERA_X_RESULT) {
+        if (it.resultCode == CAMERA_X_RESULT) {
             val myFile = it.data?.getSerializableExtra("picture") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
             val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
@@ -72,8 +73,20 @@ class PhotoResultListActivity : AppCompatActivity() {
 
         }
     }
+//
+//    private val launcherIntentGallery = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()
+//    ) { result ->
+//        if (result.resultCode == RESULT_OK) {
+//            val selectedImg: Uri = result.data?.data as Uri
+//            val myFile = uriToFile(selectedImg, this@PhotoResultListActivity)
+////            binding.previewImageView.setImageURI(selectedImg)
+//        }
+//    }
 
     companion object{
         const val IMG_BITMAP = "imgbitmap"
+        const val CAMERA_X_RESULT = 200
+
     }
 }
