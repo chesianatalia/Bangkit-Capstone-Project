@@ -3,9 +3,12 @@ package com.chesia.bangkitcapstoneproject
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -67,6 +70,7 @@ class HomepageActivity : AppCompatActivity() {
                 )
             }
         }
+        setupView()
 
 //        binding.btnHistories.setOnClickListener{
 //              mPreferences.clearPreference()
@@ -98,6 +102,7 @@ class HomepageActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
                 R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
+                R.id.log_out -> logout()
             }
             true
         }
@@ -111,6 +116,22 @@ class HomepageActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    fun logout(){
+        mPreferences.clearPreference();
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+    }
 
 
     companion object {
