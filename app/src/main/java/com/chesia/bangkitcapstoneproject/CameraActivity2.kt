@@ -76,7 +76,7 @@ class CameraActivity2 : AppCompatActivity() {
 
         val photoFile = createFile(application)
 
-        val origin = intent.getIntExtra("origin", 0)
+
 
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
         imageCapture.takePicture(
@@ -117,14 +117,19 @@ class CameraActivity2 : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, this)
+            val intent = Intent()
+            intent.putExtra("gallery", myFile)
+            intent.putExtra("isBackCamera", true)
+            setResult(PhotoResultListActivity.CAMERA_X_RESULT, intent)
+            finish();
+        }
+    }
 //            binding.previewImageView.setImageURI(selectedImg)
         }
     }
-
     private fun flash() {
 
     }
-
     private fun hideSystemUI() {
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

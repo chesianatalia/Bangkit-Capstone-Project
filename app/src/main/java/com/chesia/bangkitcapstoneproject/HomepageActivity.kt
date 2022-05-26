@@ -99,16 +99,19 @@ class HomepageActivity : AppCompatActivity() {
 
 
 
+//        toggle.isDrawerIndicatorEnabled = true
+//        drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
                 R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
-                R.id.log_out -> logOut()
+                //R.id.log_out -> logout()
             }
             true
         }
-
+        
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -46,8 +46,9 @@ class PhotoResultListActivity : AppCompatActivity() {
 
     private val listPhotos: ArrayList<PhotoItem>
         get(){
-            val myFile = intent.getSerializableExtra("picture") as File
-            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), true)
+            val myFile = if(intent.getSerializableExtra("picture") != null) intent.getSerializableExtra("picture") as File else intent.getSerializableExtra("gallery") as File
+            val isBackCamera = intent.getBooleanExtra("isBackCamera", true) as Boolean
+            val result = if(intent.getSerializableExtra("picture") != null) rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera) else BitmapFactory.decodeFile(myFile.path)
             var photo1 = PhotoItem(result, "Date", "Time")
             val photoList = ArrayList<PhotoItem>()
             photoList.add(photo1)
@@ -64,9 +65,9 @@ class PhotoResultListActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == CAMERA_X_RESULT) {
-            val myFile = it.data?.getSerializableExtra("picture") as File
+            val myFile = if(it.data?.getSerializableExtra("picture") != null) it.data?.getSerializableExtra("picture") as File else it.data?.getSerializableExtra("gallery") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
-            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
+            val result = if(it.data?.getSerializableExtra("picture") != null) rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera) else BitmapFactory.decodeFile(myFile.path)
             var photo1 = PhotoItem(result, "Date", "Time")
             list.add(photo1)
             rvPhotos.adapter?.notifyDataSetChanged()
