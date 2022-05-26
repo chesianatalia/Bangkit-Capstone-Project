@@ -104,7 +104,7 @@ class HomepageActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
                 R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
-                R.id.log_out -> logout()
+                R.id.log_out -> logOut()
             }
             true
         }
