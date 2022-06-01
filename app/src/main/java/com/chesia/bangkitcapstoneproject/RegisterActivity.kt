@@ -24,6 +24,16 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(intent.getStringExtra("name") != null){
+                binding.edtRegisterNama.setText(intent.getStringExtra("name"))
+        }
+        if(intent.getStringExtra("email") != null){
+            binding.edtRegisterEmail.setText(intent.getStringExtra("email"))
+        }
+        if(intent.getStringExtra("phone") != null){
+            binding.edtRegisterEmail.setText(intent.getStringExtra("phone"))
+        }
+
         binding.btRegister.setOnClickListener{
             hideSoftKeyboard(binding.root)
             setProgressBar(true)
