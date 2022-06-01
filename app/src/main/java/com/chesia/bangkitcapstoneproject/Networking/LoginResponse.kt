@@ -7,7 +7,10 @@ data class LoginResponse(
     val success: String? = null,
 
     @field:SerializedName("data")
-    val data: LoginResponseData? = null
+    val data: LoginResponseData? = null,
+
+    @field:SerializedName("message")
+    val message: String? = null
 )
 
 data class LoginResponseData(
