@@ -2,6 +2,7 @@ package com.chesia.bangkitcapstoneproject
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -45,8 +46,9 @@ class PhotoResultListActivity : AppCompatActivity() {
 
     private val listPhotos: ArrayList<PhotoItem>
         get(){
-            val myFile = intent.getSerializableExtra("picture") as File
-            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), true)
+            val myFile = if(intent.getSerializableExtra("picture") != null) intent.getSerializableExtra("picture") as File else intent.getSerializableExtra("gallery") as File
+            val isBackCamera = intent.getBooleanExtra("isBackCamera", true) as Boolean
+            val result = if(intent.getSerializableExtra("picture") != null) rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera) else BitmapFactory.decodeFile(myFile.path)
             var photo1 = PhotoItem(result, "Date", "Time")
             val photoList = ArrayList<PhotoItem>()
             photoList.add(photo1)
@@ -62,18 +64,30 @@ class PhotoResultListActivity : AppCompatActivity() {
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        if (it.resultCode == PhotoResult.CAMERA_X_RESULT) {
-            val myFile = it.data?.getSerializableExtra("picture") as File
+        if (it.resultCode == CAMERA_X_RESULT) {
+            val myFile = if(it.data?.getSerializableExtra("picture") != null) it.data?.getSerializableExtra("picture") as File else it.data?.getSerializableExtra("gallery") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
-            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
+            val result = if(it.data?.getSerializableExtra("picture") != null) rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera) else BitmapFactory.decodeFile(myFile.path)
             var photo1 = PhotoItem(result, "Date", "Time")
             list.add(photo1)
             rvPhotos.adapter?.notifyDataSetChanged()
 
         }
     }
+//
+//    private val launcherIntentGallery = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()
+//    ) { result ->
+//        if (result.resultCode == RESULT_OK) {
+//            val selectedImg: Uri = result.data?.data as Uri
+//            val myFile = uriToFile(selectedImg, this@PhotoResultListActivity)
+////            binding.previewImageView.setImageURI(selectedImg)
+//        }
+//    }
 
     companion object{
         const val IMG_BITMAP = "imgbitmap"
+        const val CAMERA_X_RESULT = 200
+
     }
 }

@@ -16,17 +16,17 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.chesia.bangkitcapstoneproject.Local.UserPreferences
+import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
 
 class HomepageActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomepageBinding
-    private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var mPreferences: UserPreferences
+
+    private lateinit var binding : ActivityHomepageBinding
+    private lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var mPreferences: LoginPreferences
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -59,7 +59,7 @@ class HomepageActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        mPreferences = UserPreferences(this)
+        mPreferences = LoginPreferences(this)
 
         binding.btnHistories.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
@@ -97,7 +97,6 @@ class HomepageActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -107,10 +106,6 @@ class HomepageActivity : AppCompatActivity() {
             }
             true
         }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -124,6 +119,7 @@ class HomepageActivity : AppCompatActivity() {
         mPreferences.clearPreference()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
 
     }
 
