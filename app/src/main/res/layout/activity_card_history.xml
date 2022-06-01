@@ -11,11 +11,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button3"
         android:paddingStart="17dp"
         android:paddingTop="7dp"
         android:paddingEnd="17dp"
-        android:paddingBottom="21dp"
-        android:background="@drawable/custom_button3">
+        android:paddingBottom="21dp">
 
         <TextView
             android:id="@+id/tv_status"
@@ -44,14 +44,14 @@
             android:id="@+id/tv_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
             android:layout_marginStart="19dp"
+            android:layout_marginTop="17dp"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/black"
             android:textSize="16sp"
-            cardview:layout_constraintTop_toBottomOf="@id/tv_status"
-            cardview:layout_constraintStart_toEndOf="@id/img_barcode"
             cardview:layout_constraintEnd_toEndOf="parent"
+            cardview:layout_constraintStart_toEndOf="@id/img_barcode"
+            cardview:layout_constraintTop_toBottomOf="@id/tv_status"
             tools:text="15 Mei 2022" />
 
         <TextView
@@ -63,11 +63,10 @@
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
-            cardview:layout_constraintTop_toBottomOf="@id/tv_date"
-            cardview:layout_constraintStart_toEndOf="@id/img_barcode"
             cardview:layout_constraintEnd_toEndOf="parent"
+            cardview:layout_constraintStart_toEndOf="@id/img_barcode"
+            cardview:layout_constraintTop_toBottomOf="@id/tv_date"
             tools:text="PETE\nHDPE\nOTHERS" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

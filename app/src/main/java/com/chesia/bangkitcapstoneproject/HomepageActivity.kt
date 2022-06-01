@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationView
 
 class HomepageActivity : AppCompatActivity() {
 
+
     private lateinit var binding : ActivityHomepageBinding
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var mPreferences: LoginPreferences
@@ -33,7 +34,7 @@ class HomepageActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode == REQUEST_CODE_PERMISSIONS){
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
@@ -44,6 +45,7 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
@@ -64,7 +66,7 @@ class HomepageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnScan.setOnClickListener{
+        binding.btnScan.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
 
@@ -84,43 +86,36 @@ class HomepageActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val toolBar : Toolbar = binding.toolbar
+        val toolBar: Toolbar = binding.toolbar
 
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout,toolBar, R.string.open, R.string.close)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolBar, R.string.open, R.string.close)
         toggle.drawerArrowDrawable.color = resources.getColor(R.color.black)
 
 
+        toggle.isDrawerIndicatorEnabled = true
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-       toggle.isDrawerIndicatorEnabled = true
-       drawerLayout.addDrawerListener(toggle)
-       toggle.syncState()
-
-
-
-//        toggle.isDrawerIndicatorEnabled = true
-//        drawerLayout.addDrawerListener(toggle)
-//        toggle.syncState()
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
                 R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.log_out -> logOut()
             }
             true
         }
-        
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)){
+        if (toggle.onOptionsItemSelected(item)) {
             return true
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun logOut(){
+    private fun logOut() {
         mPreferences.clearPreference()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

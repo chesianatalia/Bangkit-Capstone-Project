@@ -255,8 +255,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@drawable/custom_button3"
         android:fitsSystemWindows="true"
-        app:menu="@menu/nav_menu"
-        android:background="@drawable/custom_button3"/>
+        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
