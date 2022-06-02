@@ -49,7 +49,7 @@ class PhotoResultListActivity : AppCompatActivity() {
         }
     }
 
-    private fun allPermissionsGranted() = PhotoResultListActivity.REQUIRED_PERMISSIONS.all {
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -57,6 +57,14 @@ class PhotoResultListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPhotoResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (!allPermissionsGranted()) {
+            ActivityCompat.requestPermissions(
+                this,
+                REQUIRED_PERMISSIONS,
+                REQUEST_CODE_PERMISSIONS
+            )
+        }
 
         rvPhotos = findViewById(R.id.rv_photos)
         rvPhotos.setHasFixedSize(true)
@@ -72,14 +80,6 @@ class PhotoResultListActivity : AppCompatActivity() {
 
            
         binding.btNext.setOnClickListener{
-            if (!allPermissionsGranted()) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    REQUIRED_PERMISSIONS,
-                    REQUEST_CODE_PERMISSIONS
-                )
-            }
-
 
             val intent = Intent(this, TFliteActivity::class.java)
             for(i in 0 until list.size){
