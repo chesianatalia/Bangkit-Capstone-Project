@@ -1,12 +1,21 @@
 package com.chesia.bangkitcapstoneproject
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import android.content.ContentResolver
+import android.content.Intent
 import android.graphics.*
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+<<<<<<< Updated upstream
+=======
+import android.view.View
+>>>>>>> Stashed changes
 import androidx.appcompat.app.AppCompatActivity
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
@@ -17,10 +26,12 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
 
-class TFliteActivity : AppCompatActivity() {
+class TFliteActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityTfliteBinding
     private var imgSize: Int = 224
-
+    var PET = 0
+    var HDPE = 0
+    var Other = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +40,7 @@ class TFliteActivity : AppCompatActivity() {
 
         val photoList = intent.getStringArrayListExtra("listuri")
 
-        var PET = 0
-        var HDPE = 0
-        var Other = 0
+
         val size = photoList!!.size
 
         for (i in 0 until photoList!!.size) {
@@ -52,6 +61,25 @@ class TFliteActivity : AppCompatActivity() {
         binding.tvHDPE.text = HDPE.toString()
         binding.tvOTHERS.text = Other.toString()
 
+<<<<<<< Updated upstream
+=======
+        
+      binding.confirmButton.setOnClickListener{
+        val intent = Intent(this, ConfirmationActivity::class.java)
+          intent.putExtra("totalPET", PET)
+          intent.putExtra("totalHDPE", HDPE)
+          intent.putExtra("totalOTHER", Other)
+          intent.putExtra("note", binding.notesInput.editText!!.text.toString())
+        startActivity(intent)
+        }
+
+        binding.plusPETE.setOnClickListener(this)
+        binding.minusPETE.setOnClickListener(this)
+        binding.plusHDPE.setOnClickListener(this)
+        binding.minusHdpe.setOnClickListener(this)
+        binding.plusOther.setOnClickListener(this)
+        binding.minusOther.setOnClickListener(this)
+>>>>>>> Stashed changes
     }
 
     private fun doInference(bmp: Bitmap) : String{
@@ -131,4 +159,40 @@ class TFliteActivity : AppCompatActivity() {
     private fun convertBmp(bitmap: Bitmap): Bitmap? {
         return bitmap.copy(Bitmap.Config.RGB_565, false)
     }
+<<<<<<< Updated upstream
+=======
+
+    override fun onClick(p0: View) {
+        when(p0.id){
+            R.id.plusPETE->{
+                PET += 1
+                binding.tvPET.text = PET.toString();
+            }
+            R.id.minusPETE->{
+                PET -= 1
+                if(PET < 0) PET = 0
+                binding.tvPET.text = PET.toString();
+            }
+            R.id.plusHDPE->{
+                HDPE += 1
+                binding.tvHDPE.text = HDPE.toString();
+            }
+            R.id.minusHdpe->{
+                HDPE -= 1
+                if(HDPE < 0) HDPE = 0
+                binding.tvHDPE.text = HDPE.toString();
+            }
+            R.id.plusOther->{
+                Other += 1
+                binding.tvOTHERS.text = Other.toString();
+            }
+            R.id.minusOther->{
+                Other -= 1
+                if(Other < 0) Other = 0
+                binding.tvOTHERS.text = Other.toString();
+            }
+        }
+    }
+
+>>>>>>> Stashed changes
 }

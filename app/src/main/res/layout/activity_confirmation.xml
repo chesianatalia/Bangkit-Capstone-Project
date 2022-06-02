@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pagebackground"
+    tools:context=".ConfirmationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="confirmation page"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/jenisSampah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/plastic_type"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/beratSampah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/weight_kg"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="350dp"
+            android:layout_height="145dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/beratSampah"
+            app:layout_constraintStart_toStartOf="@+id/jenisSampah"
+            app:layout_constraintTop_toBottomOf="@+id/jenisSampah" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:srcCompat="@drawable/pete_icon" />
+
+        <TextView
+            android:id="@+id/PETE"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:text="PETE"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+        <TextView
+            android:id="@+id/textViewPete"
+            android:layout_width="32dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/PETE"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <ImageView
+            android:id="@+id/imageHdpe"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:srcCompat="@drawable/hdpe_icon" />
+
+        <TextView
+            android:id="@+id/HDPE"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:text="HDPE"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageHdpe"
+            app:layout_constraintStart_toEndOf="@+id/imageHdpe"
+            app:layout_constraintTop_toTopOf="@+id/imageHdpe" />
+
+        <TextView
+            android:id="@+id/textViewhdpe"
+            android:layout_width="32dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/HDPE"
+            app:layout_constraintEnd_toEndOf="@+id/textViewPete"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPete" />
+
+        <ImageView
+            android:id="@+id/imageOther"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/imageHdpe"
+            app:layout_constraintTop_toBottomOf="@+id/imageHdpe"
+            app:srcCompat="@drawable/hdpe_icon" />
+
+        <TextView
+            android:id="@+id/OTHER"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:text="OTHER"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageOther"
+            app:layout_constraintStart_toEndOf="@+id/imageOther"
+            app:layout_constraintTop_toTopOf="@+id/imageOther" />
+
+        <TextView
+            android:id="@+id/textViewOther"
+            android:layout_width="32dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/OTHER"
+            app:layout_constraintEnd_toEndOf="@+id/textViewhdpe"
+            app:layout_constraintTop_toBottomOf="@+id/textViewhdpe" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Notes"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/jenisSampah"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_notes"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/Grove3"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:text="Notes placeholder" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_notes"
+            app:layout_constraintStart_toStartOf="@+id/tv_notes"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notes" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginStart="8dp"
+            android:text="Point Accumulation"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintStart_toStartOf="@+id/view4"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginEnd="16dp"
+            android:text="0 Pts"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toEndOf="@+id/view4"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
+
+        <TextView
+
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:text="LOCATION"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/view4"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <View
+            android:id="@+id/maps"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintEnd_toEndOf="@+id/tv_notes"
+            app:layout_constraintStart_toStartOf="@+id/tv_notes"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/maps"
+            app:layout_constraintTop_toBottomOf="@+id/maps"
+            app:srcCompat="@drawable/ic_location" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/maps"
+            tools:text="Kampus ITS Surabaya" />
+
+        <Button
+            android:id="@+id/button_confirmation"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text ="Confirm"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location" />
+        <!--    <View-->
+        <!--        android:id="@+id/maps"-->
+        <!--        android:layout_width="350dp"-->
+        <!--        android:layout_height="200dp"-->
+        <!--        android:background="@drawable/rectangle"-->
+        <!--        app:layout_constraintEnd_toEndOf="@+id/textView7"-->
+        <!--        app:layout_constraintStart_toStartOf="@+id/textView7"-->
+        <!--        tools:layout_editor_absoluteY="459dp" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</ScrollView>
