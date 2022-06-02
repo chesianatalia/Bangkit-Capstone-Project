@@ -10,7 +10,11 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+<<<<<<< HEAD
 import android.view.View
+=======
+import androidx.appcompat.app.AppCompatActivity
+>>>>>>> parent of 1b253a9 (Merge pull request #52 from chesianatalia/chesia's-branch)
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
 import org.tensorflow.lite.DataType
