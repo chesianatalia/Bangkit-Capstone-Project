@@ -2,7 +2,7 @@ package com.chesia.bangkitcapstoneproject.Local
 
 import android.content.Context
 
-class LoginPreferences (context: Context) {
+class UserPreferences (context: Context) {
     private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     val editor = preferences.edit()
 

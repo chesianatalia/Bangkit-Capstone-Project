@@ -16,8 +16,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
+import com.chesia.bangkitcapstoneproject.Local.UserPreferences
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -26,7 +27,7 @@ class HomepageActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomepageBinding
     private lateinit var toggle : ActionBarDrawerToggle
-    private lateinit var mPreferences: LoginPreferences
+    private lateinit var mPreferences: UserPreferences
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -59,7 +60,7 @@ class HomepageActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        mPreferences = LoginPreferences(this)
+        mPreferences = UserPreferences(this)
 
         binding.btnHistories.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
@@ -102,7 +103,7 @@ class HomepageActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.close_nav -> drawerLayout.closeDrawer(GravityCompat.START)
                 R.id.pengaturan -> startActivity(Intent(this, SettingsActivity::class.java))
-                R.id.log_out -> logOut()
+                //R.id.log_out -> logout()
             }
             true
         }
@@ -119,7 +120,6 @@ class HomepageActivity : AppCompatActivity() {
         mPreferences.clearPreference()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        finish()
 
     }
 

@@ -13,7 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
+import com.chesia.bangkitcapstoneproject.Local.UserPreferences
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.LoginResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityMainBinding
@@ -33,7 +33,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mPreferences: LoginPreferences
+    private lateinit var mPreferences: UserPreferences
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        mPreferences = LoginPreferences(this);
+        mPreferences = UserPreferences(this);
 
         if(mPreferences.getToken() != ""){
             startActivity(Intent(this@MainActivity, HomepageActivity::class.java));
@@ -185,22 +185,9 @@ class MainActivity : AppCompatActivity() {
                                     startActivity(intent)
                                     finish()
                                 }else{
-                                    if(response.body()!!.message!! == "Account not found"){
-                                        Toast.makeText(this@MainActivity, "Silahkan register terlebih dahulu", Toast.LENGTH_SHORT).show()
-                                        val intent = Intent(this@MainActivity, RegisterActivity::class.java)
-                                        if(user.displayName != null){
-                                            intent.putExtra("name", user.displayName)
-                                        }
-                                        if(user.email != null){
-                                            intent.putExtra("email", user.email)
-                                        }
-                                        if(user.phoneNumber != null){
-                                            intent.putExtra("phone", user.phoneNumber)
-                                        }
-                                        startActivity(intent)
-                                    }else{
-                                        Toast.makeText(this@MainActivity, "Password salah", Toast.LENGTH_SHORT).show()
-                                    }
+                                    Log.d("GOOGLETOKEN", idToken)
+                                    Log.d("GMAIL", user!!.email.toString())
+                                    Toast.makeText(this@MainActivity, "Email or password wrong", Toast.LENGTH_SHORT).show()
                                 }
                             }
 
