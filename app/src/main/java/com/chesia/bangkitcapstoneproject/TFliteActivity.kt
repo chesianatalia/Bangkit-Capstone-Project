@@ -10,11 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-<<<<<<< HEAD
 import android.view.View
-=======
-import androidx.appcompat.app.AppCompatActivity
->>>>>>> parent of 1b253a9 (Merge pull request #52 from chesianatalia/chesia's-branch)
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
 import org.tensorflow.lite.DataType
@@ -57,7 +53,8 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.tvPET.text = PET.toString()
         binding.tvHDPE.text = HDPE.toString()
-        binding.tvOTHERS.text = Other.toString()
+        binding.tvOTHER.text = Other.toString()
+
       binding.confirmButton.setOnClickListener{
         val intent = Intent(this, ConfirmationActivity::class.java)
           intent.putExtra("totalPET", PET)
@@ -73,10 +70,6 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
         binding.minusHdpe.setOnClickListener(this)
         binding.plusOther.setOnClickListener(this)
         binding.minusOther.setOnClickListener(this)
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }
 
     private fun doInference(bmp: Bitmap) : String{
@@ -179,12 +172,12 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.plusOther->{
                 Other += 1
-                binding.tvOTHERS.text = Other.toString();
+                binding.tvOTHER.text = Other.toString();
             }
             R.id.minusOther->{
                 Other -= 1
                 if(Other < 0) Other = 0
-                binding.tvOTHERS.text = Other.toString();
+                binding.tvOTHER.text = Other.toString();
             }
         }
     }
