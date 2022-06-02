@@ -73,7 +73,10 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
         binding.minusHdpe.setOnClickListener(this)
         binding.plusOther.setOnClickListener(this)
         binding.minusOther.setOnClickListener(this)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     }
 
     private fun doInference(bmp: Bitmap) : String{
