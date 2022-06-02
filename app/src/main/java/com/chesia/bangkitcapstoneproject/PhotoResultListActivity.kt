@@ -1,13 +1,31 @@
 package com.chesia.bangkitcapstoneproject
 
+<<<<<<< Updated upstream
 import android.content.Intent
+=======
+import android.Manifest
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+>>>>>>> Stashed changes
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< Updated upstream
 import android.view.LayoutInflater
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
+=======
+import android.provider.MediaStore
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+>>>>>>> Stashed changes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chesia.bangkitcapstoneproject.Adapter.PhotoItem
@@ -22,6 +40,28 @@ class PhotoResultListActivity : AppCompatActivity() {
     private val list = ArrayList<PhotoItem>()
 
     private lateinit var binding: ActivityPhotoResultListBinding
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (!allPermissionsGranted()) {
+                Toast.makeText(
+                    this,
+                    "Don't have permission to access storage.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
+            }
+        }
+    }
+
+    private fun allPermissionsGranted() = PhotoResultListActivity.REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +79,27 @@ class PhotoResultListActivity : AppCompatActivity() {
             val intent = Intent(this, CameraActivity2::class.java)
             launcherIntentCameraX.launch(intent)
         }
+<<<<<<< Updated upstream
+=======
+           
+        binding.btNext.setOnClickListener{
+            if (!allPermissionsGranted()) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    REQUIRED_PERMISSIONS,
+                    REQUEST_CODE_PERMISSIONS
+                )
+            }
+
+            val intent = Intent(this, TFliteActivity::class.java)
+            for(i in 0 until list.size){
+                listUri.add(getImageUri(this, list[i].photoBitmap, "image$i"))
+                Log.d("URI", listUri[i])
+            }
+            intent.putStringArrayListExtra("listuri", listUri)
+            startActivity(intent)
+        }
+>>>>>>> Stashed changes
 
 
 
@@ -88,6 +149,8 @@ class PhotoResultListActivity : AppCompatActivity() {
     companion object{
         const val IMG_BITMAP = "imgbitmap"
         const val CAMERA_X_RESULT = 200
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        private const val REQUEST_CODE_PERMISSIONS = 10
 
     }
 }
