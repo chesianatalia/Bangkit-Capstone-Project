@@ -40,6 +40,11 @@ class PhotoResultListActivity : AppCompatActivity() {
             launcherIntentCameraX.launch(intent)
         }
 
+        binding.nextButton2.setOnClickListener{
+            val intent = Intent(this, TFliteActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

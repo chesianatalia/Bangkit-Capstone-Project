@@ -42,4 +42,7 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="wasteList">Your Waste List</string>
+    <string name="plastic_type">Plastic Type</string>
+    <string name="weight_kg">Weight/Kg</string>
 </resources>
