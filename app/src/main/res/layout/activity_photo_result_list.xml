@@ -64,6 +64,34 @@
         app:layout_constraintVertical_bias="0.495"
         app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
 
+    <ImageButton
+        android:id="@+id/nextButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/custom_button2"
+        android:elevation="2dp"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rv_photos"
+        app:layout_constraintTop_toBottomOf="@+id/line_cardView"
+        app:srcCompat="@drawable/ic_baseline_next" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Next"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/nextButton2"
+        app:layout_constraintStart_toStartOf="@+id/nextButton2"
+        app:layout_constraintTop_toBottomOf="@+id/nextButton2" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_photos"
         android:layout_width="wrap_content"

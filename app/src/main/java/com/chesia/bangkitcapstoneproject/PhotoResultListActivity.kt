@@ -42,7 +42,7 @@ class PhotoResultListActivity : AppCompatActivity() {
             val intent = Intent(this, CameraActivity2::class.java)
             launcherIntentCameraX.launch(intent)
         }
-
+           
         binding.btNext.setOnClickListener{
             val intent = Intent(this, TFliteActivity::class.java)
             for(i in 0 until list.size){
@@ -51,7 +51,6 @@ class PhotoResultListActivity : AppCompatActivity() {
             }
             intent.putStringArrayListExtra("listuri", listUri)
             startActivity(intent)
-
         }
 
 
