@@ -1,11 +1,16 @@
 package com.chesia.bangkitcapstoneproject
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import android.provider.MediaStore
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,10 +31,40 @@ class PhotoResultListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPhotoResultListBinding
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (!allPermissionsGranted()) {
+                Toast.makeText(
+                    this,
+                    "Don't have permission to access storage.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
+            }
+        }
+    }
+
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPhotoResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (!allPermissionsGranted()) {
+            ActivityCompat.requestPermissions(
+                this,
+                REQUIRED_PERMISSIONS,
+                REQUEST_CODE_PERMISSIONS
+            )
+        }
 
         rvPhotos = findViewById(R.id.rv_photos)
         rvPhotos.setHasFixedSize(true)
@@ -43,7 +78,9 @@ class PhotoResultListActivity : AppCompatActivity() {
             launcherIntentCameraX.launch(intent)
         }
 
+           
         binding.btNext.setOnClickListener{
+
             val intent = Intent(this, TFliteActivity::class.java)
             for(i in 0 until list.size){
                 listUri.add(getImageUri(this, list[i].photoBitmap, "image$i"))
@@ -51,11 +88,7 @@ class PhotoResultListActivity : AppCompatActivity() {
             }
             intent.putStringArrayListExtra("listuri", listUri)
             startActivity(intent)
-
         }
-
-
-
     }
 
     private val listPhotos: ArrayList<PhotoItem>
@@ -113,6 +146,8 @@ class PhotoResultListActivity : AppCompatActivity() {
     companion object{
         const val IMG_BITMAP = "imgbitmap"
         const val CAMERA_X_RESULT = 200
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        private const val REQUEST_CODE_PERMISSIONS = 10
 
     }
 }

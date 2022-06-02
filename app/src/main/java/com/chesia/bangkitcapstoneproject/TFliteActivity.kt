@@ -1,9 +1,8 @@
 package com.chesia.bangkitcapstoneproject
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.*
@@ -12,11 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-<<<<<<< Updated upstream
-=======
 import android.view.View
->>>>>>> Stashed changes
-import androidx.appcompat.app.AppCompatActivity
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
 import org.tensorflow.lite.DataType
@@ -60,10 +55,6 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvPET.text = PET.toString()
         binding.tvHDPE.text = HDPE.toString()
         binding.tvOTHERS.text = Other.toString()
-
-<<<<<<< Updated upstream
-=======
-        
       binding.confirmButton.setOnClickListener{
         val intent = Intent(this, ConfirmationActivity::class.java)
           intent.putExtra("totalPET", PET)
@@ -79,7 +70,11 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
         binding.minusHdpe.setOnClickListener(this)
         binding.plusOther.setOnClickListener(this)
         binding.minusOther.setOnClickListener(this)
->>>>>>> Stashed changes
+        
+      binding.confirmButton.setOnClickListener{
+        val intent = Intent(this, ConfirmationActivity::class.java)
+        startActivity(intent)
+        }
     }
 
     private fun doInference(bmp: Bitmap) : String{
@@ -159,9 +154,7 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
     private fun convertBmp(bitmap: Bitmap): Bitmap? {
         return bitmap.copy(Bitmap.Config.RGB_565, false)
     }
-<<<<<<< Updated upstream
-=======
-
+    
     override fun onClick(p0: View) {
         when(p0.id){
             R.id.plusPETE->{
@@ -193,6 +186,4 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
->>>>>>> Stashed changes
 }

@@ -191,7 +191,7 @@
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             tools:text="Notes placeholder" />
-
+      
         <View
             android:id="@+id/view4"
             android:layout_width="350dp"
