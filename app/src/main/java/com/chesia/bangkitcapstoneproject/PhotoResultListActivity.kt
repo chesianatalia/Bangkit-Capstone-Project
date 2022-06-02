@@ -1,25 +1,28 @@
 package com.chesia.bangkitcapstoneproject
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chesia.bangkitcapstoneproject.Adapter.PhotoItem
 import com.chesia.bangkitcapstoneproject.Adapter.PhotoRVAdapter
-import com.chesia.bangkitcapstoneproject.databinding.ActivityPhotoResultBinding
 import com.chesia.bangkitcapstoneproject.databinding.ActivityPhotoResultListBinding
+import java.io.ByteArrayOutputStream
 import java.io.File
-import java.lang.reflect.Array.get
+
 
 class PhotoResultListActivity : AppCompatActivity() {
     private lateinit var rvPhotos: RecyclerView;
     private val list = ArrayList<PhotoItem>()
+    private val listUri = ArrayList<String>()
 
     private lateinit var binding: ActivityPhotoResultListBinding
 
@@ -35,13 +38,18 @@ class PhotoResultListActivity : AppCompatActivity() {
         list.addAll(listPhotos)
         showRecyclerList()
 
-        binding.cameraXButton2.setOnClickListener{
+        binding.cameraXButton3.setOnClickListener{
             val intent = Intent(this, CameraActivity2::class.java)
             launcherIntentCameraX.launch(intent)
         }
-
-        binding.nextButton2.setOnClickListener{
+           
+        binding.btNext.setOnClickListener{
             val intent = Intent(this, TFliteActivity::class.java)
+            for(i in 0 until list.size){
+                listUri.add(getImageUri(this, list[i].photoBitmap, "image$i"))
+                Log.d("URI", listUri[i])
+            }
+            intent.putStringArrayListExtra("listuri", listUri)
             startActivity(intent)
         }
 
@@ -51,8 +59,9 @@ class PhotoResultListActivity : AppCompatActivity() {
 
     private val listPhotos: ArrayList<PhotoItem>
         get(){
-            val myFile = intent.getSerializableExtra("picture") as File
-            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), true)
+            val myFile = if(intent.getSerializableExtra("picture") != null) intent.getSerializableExtra("picture") as File else intent.getSerializableExtra("gallery") as File
+            val isBackCamera = intent.getBooleanExtra("isBackCamera", true) as Boolean
+            val result = if(intent.getSerializableExtra("picture") != null) rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera) else BitmapFactory.decodeFile(myFile.path)
             var photo1 = PhotoItem(result, "Date", "Time")
             val photoList = ArrayList<PhotoItem>()
             photoList.add(photo1)
@@ -69,9 +78,9 @@ class PhotoResultListActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == CAMERA_X_RESULT) {
-            val myFile = it.data?.getSerializableExtra("picture") as File
+            val myFile = if(it.data?.getSerializableExtra("picture") != null) it.data?.getSerializableExtra("picture") as File else it.data?.getSerializableExtra("gallery") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
-            val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
+            val result = if(it.data?.getSerializableExtra("picture") != null) rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera) else BitmapFactory.decodeFile(myFile.path)
             var photo1 = PhotoItem(result, "Date", "Time")
             list.add(photo1)
             rvPhotos.adapter?.notifyDataSetChanged()
@@ -89,6 +98,17 @@ class PhotoResultListActivity : AppCompatActivity() {
 //        }
 //    }
 
+    fun getImageUri(inContext: Context, inImage: Bitmap, title: String): String {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = MediaStore.Images.Media.insertImage(
+            inContext.contentResolver,
+            inImage,
+            title,
+            null
+        )
+        return Uri.parse(path).toString()
+    }
     companion object{
         const val IMG_BITMAP = "imgbitmap"
         const val CAMERA_X_RESULT = 200

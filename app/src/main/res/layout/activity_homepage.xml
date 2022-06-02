@@ -19,9 +19,10 @@
             tools:context=".HomepageActivity">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tb_homepage"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +31,8 @@
                     android:id="@+id/btn_histories"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_gravity="start"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="15dp"
                     android:src="@drawable/ic_baseline_history_24" />
 
                 <ImageView
@@ -38,34 +40,37 @@
                     android:layout_width="200dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/replasc_logo_horizon"/>
-
-
-                <ImageView
-                    android:id="@+id/menu"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/ic_baseline_menu_24" />
+                    android:src="@drawable/replasc_logo_horizon" />
 
             </androidx.appcompat.widget.Toolbar>
+
+            <ImageView
+                android:id="@+id/leaf_card_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="-5dp"
+                android:elevation="5dp"
+                android:src="@drawable/leaf_card_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="21dp"
                 android:layout_marginEnd="40dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tb_homepage">
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/custom_button3"
                     android:padding="7dp">
 
                     <ImageView
@@ -74,7 +79,7 @@
                         android:layout_height="92dp"
                         android:background="#000000"
                         android:padding="1dp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/avatars" />
 
@@ -82,13 +87,14 @@
                         android:id="@+id/tv_userName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginEnd="3dp"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_User"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_User"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Username" />
 
@@ -101,7 +107,6 @@
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_User"
                         app:layout_constraintStart_toStartOf="@id/tv_userName"
                         app:layout_constraintTop_toBottomOf="@id/tv_userName"
                         tools:text="PhoneNumber" />
@@ -114,7 +119,6 @@
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_User"
                         app:layout_constraintStart_toStartOf="@+id/tv_userPhoneNumber"
                         app:layout_constraintTop_toBottomOf="@+id/tv_userPhoneNumber"
                         tools:text="Email" />
@@ -133,20 +137,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
+                        android:layout_marginEnd="7dp"
                         android:src="@drawable/poinicon"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/line_cardView" />
 
                     <TextView
                         android:id="@+id/tv_userPoint"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="11dp"
                         android:layout_marginTop="7dp"
+                        android:layout_marginEnd="11dp"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        app:layout_constraintStart_toEndOf="@id/img_points"
+                        app:layout_constraintEnd_toStartOf="@id/img_points"
                         app:layout_constraintTop_toBottomOf="@+id/line_cardView"
                         tools:text="10.000 points" />
 
@@ -174,7 +179,7 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:layout_marginTop="7dp"
-                android:background="@drawable/custom_button2"
+                android:background="@drawable/custom_button3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_greeting"
@@ -249,8 +254,9 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/nav_menu"
-        android:layout_gravity="end"
-        android:fitsSystemWindows="true"/>
+        android:layout_gravity="start"
+        android:background="@drawable/custom_button3"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

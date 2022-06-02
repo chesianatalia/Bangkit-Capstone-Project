@@ -106,7 +106,7 @@ class CameraActivity : AppCompatActivity() {
             }
         )
     }
-
+    
     private fun openGallery(){
         val intent = Intent()
         intent.action = ACTION_GET_CONTENT
@@ -121,16 +121,17 @@ class CameraActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, this)
+            val intent = Intent(this@CameraActivity, PhotoResultListActivity::class.java)
+            intent.putExtra("gallery", myFile)
+            intent.putExtra("isBackCamera", true)
+            setResult(PhotoResultListActivity.CAMERA_X_RESULT, intent)
+            startActivity(intent)
 //            binding.previewImageView.setImageURI(selectedImg)
 //            val intent = Intent(this@CameraActivity, PhotoResultListActivity::class.java)
 //            startActivity(intent)
         }
 
     }
-
-
-
-
 
     private fun flash() {
 

@@ -7,8 +7,7 @@
     android:background="@drawable/pagebackground"
     tools:context=".TFliteActivity">
 
-<<<<<<< Updated upstream
-=======
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -315,5 +314,66 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        tools:srcCompat="@tools:sample/avatars" />-->
 
->>>>>>> Stashed changes
+
+<!--     <TextView
+        android:id="@+id/tv_modelresult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="76dp"
+        android:text="PET:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_modelresult2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="116dp"
+        android:text="HDPE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_modelresult3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="156dp"
+        android:text="OTHERS:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_HDPE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_modelresult2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PET" />
+
+    <TextView
+        android:id="@+id/tv_PET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_modelresult"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_OTHERS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_modelresult3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_HDPE" /> -->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

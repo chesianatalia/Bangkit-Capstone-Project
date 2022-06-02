@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -48,6 +49,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
+
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
 
@@ -94,6 +96,4 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
-    implementation 'org.tensorflow:tensorflow-lite:+'
 }
