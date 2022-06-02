@@ -4,14 +4,17 @@ package com.chesia.bangkitcapstoneproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.content.ContentResolver
-import android.content.Intent
 import android.graphics.*
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+<<<<<<< HEAD
 import android.view.View
+=======
+import androidx.appcompat.app.AppCompatActivity
+>>>>>>> parent of 1b253a9 (Merge pull request #52 from chesianatalia/chesia's-branch)
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
 import org.tensorflow.lite.DataType
@@ -70,11 +73,10 @@ class TFliteActivity : AppCompatActivity(), View.OnClickListener {
         binding.minusHdpe.setOnClickListener(this)
         binding.plusOther.setOnClickListener(this)
         binding.minusOther.setOnClickListener(this)
-        
-      binding.confirmButton.setOnClickListener{
-        val intent = Intent(this, ConfirmationActivity::class.java)
-        startActivity(intent)
-        }
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
     }
 
     private fun doInference(bmp: Bitmap) : String{
