@@ -18,8 +18,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
+import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
+import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomepageActivity : AppCompatActivity() {
 
@@ -133,6 +138,23 @@ class HomepageActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+    }
+
+    private fun getUserData(token:String){
+        val client = ApiConfig.getApiService().getUserProfile(token = "Bearer $token")
+        client.enqueue(object : Callback<UserProfileResponse>{
+            override fun onResponse(
+                call: Call<UserProfileResponse>,
+                response: Response<UserProfileResponse>
+            ) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
 
