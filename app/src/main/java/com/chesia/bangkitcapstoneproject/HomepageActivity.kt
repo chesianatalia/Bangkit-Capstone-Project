@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
@@ -18,8 +19,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
+import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
+import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.material.navigation.NavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomepageActivity : AppCompatActivity() {
 
@@ -60,6 +66,8 @@ class HomepageActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         mPreferences = LoginPreferences(this)
+
+        getUserData(mPreferences.getToken())
 
         binding.btnHistories.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
@@ -133,6 +141,28 @@ class HomepageActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+    }
+
+    private fun getUserData(token:String){
+
+        ApiConfig.getApiService().getUserProfile(token = "Bearer $token").enqueue(object : Callback<UserProfileResponse>{
+            override fun onResponse(
+                call: Call<UserProfileResponse>,
+                response: Response<UserProfileResponse>
+            ) {
+                if(response.isSuccessful){
+                    Log.d("Response", response.body()?.success.toString())
+                    binding.tvUserName.text = response.body()?.data?.user?.fullname
+                    binding.tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
+                    binding.tvUserEmail.text = response.body()?.data?.user?.email
+                }
+            }
+
+            override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
+                Log.d("Error", ": ${t.message}")
+            }
+
+        })
     }
 
 

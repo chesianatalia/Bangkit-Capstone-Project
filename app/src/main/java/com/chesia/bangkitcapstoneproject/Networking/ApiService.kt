@@ -43,4 +43,8 @@ interface ApiService {
         @Part("collectionPoint") collectionPoint: RequestBody?,
     ): Call<TrashReportResponse>
 
+    @GET("me")
+    fun getUserProfile(
+        @Header("Authorization") token: String
+    ): Call<UserProfileResponse>
 }
