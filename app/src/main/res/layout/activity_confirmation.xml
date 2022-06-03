@@ -191,7 +191,7 @@
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             tools:text="Notes placeholder" />
-      
+
         <View
             android:id="@+id/view4"
             android:layout_width="350dp"
@@ -214,7 +214,7 @@
             app:layout_constraintTop_toTopOf="@+id/view4" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/tv_points"
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:layout_marginEnd="16dp"
@@ -279,6 +279,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/location" />
+
+        <ProgressBar
+            android:id="@+id/pb_trashreport"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationZ="90dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/maps"
+            app:layout_constraintEnd_toEndOf="@+id/maps"
+            app:layout_constraintStart_toStartOf="@+id/maps"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
         <!--    <View-->
         <!--        android:id="@+id/maps"-->
         <!--        android:layout_width="350dp"-->
