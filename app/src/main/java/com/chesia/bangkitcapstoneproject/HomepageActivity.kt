@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
@@ -65,6 +66,8 @@ class HomepageActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         mPreferences = LoginPreferences(this)
+
+        getUserData(mPreferences.getToken())
 
         binding.btnHistories.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
@@ -141,17 +144,22 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     private fun getUserData(token:String){
-        val client = ApiConfig.getApiService().getUserProfile(token = "Bearer $token")
-        client.enqueue(object : Callback<UserProfileResponse>{
+
+        ApiConfig.getApiService().getUserProfile(token = "Bearer $token").enqueue(object : Callback<UserProfileResponse>{
             override fun onResponse(
                 call: Call<UserProfileResponse>,
                 response: Response<UserProfileResponse>
             ) {
-                TODO("Not yet implemented")
+                if(response.isSuccessful){
+                    Log.d("Response", response.body()?.success.toString())
+                    binding.tvUserName.text = response.body()?.data?.user?.fullname
+                    binding.tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
+                    binding.tvUserEmail.text = response.body()?.data?.user?.email
+                }
             }
 
             override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.d("Error", ": ${t.message}")
             }
 
         })
