@@ -78,7 +78,9 @@ class MainActivity : AppCompatActivity() {
                         setProgressBar(false)
                         if(response.isSuccessful && response.body()!!.data != null){
                             mPreferences.setToken(response.body()!!.data!!.token)
+                            mPreferences.setEndpoint(response.body()!!.data!!.token)
                             Log.d("respToken", response.body()!!.data!!.token)
+                            Log.d("respEndpoint", response.body()!!.data!!.endpoint)
                             val intent = Intent(this@MainActivity, HomepageActivity::class.java);
                             startActivity(intent)
                             finish()

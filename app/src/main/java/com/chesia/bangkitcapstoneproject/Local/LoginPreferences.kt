@@ -11,9 +11,21 @@ class LoginPreferences (context: Context) {
         editor.apply()
     }
 
+    fun setEndpoint(value: String){
+        editor.putString(ENDPOINT, value)
+        editor.apply()
+    }
+
     fun getToken(): String {
         val token: String =
             if (preferences.getString(TOKEN, "") != null) preferences.getString(TOKEN, "")!! else ""
+        return token
+
+    }
+
+    fun getEndpoint(): String {
+        val token: String =
+            if (preferences.getString(ENDPOINT, "") != null) preferences.getString(ENDPOINT, "")!! else ""
         return token
 
     }
@@ -27,5 +39,6 @@ class LoginPreferences (context: Context) {
     companion object{
         private const val PREFS_NAME = "user_pref"
         private const val TOKEN = "token"
+        private const val ENDPOINT = "endpoint"
     }
 }
