@@ -28,4 +28,9 @@ interface ApiService {
         @Field("email") email: String,
         @Field("token") token: String
     ): Call<LoginResponse>
+
+    @GET("me")
+    fun getUserProfile(
+        @Header("Authorization") token: String
+    ): Call<UserProfileResponse>
 }
