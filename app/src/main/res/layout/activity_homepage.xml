@@ -73,15 +73,17 @@
                     android:background="@drawable/custom_button3"
                     android:padding="7dp">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_User"
                         android:layout_width="92dp"
                         android:layout_height="92dp"
-                        android:background="#000000"
                         android:padding="1dp"
+                        android:src="@drawable/mainlogo_white"
+                        android:tint="@color/white"
+                        android:alpha="0.8"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@tools:sample/avatars" />
+                        />
 
                     <TextView
                         android:id="@+id/tv_userName"
@@ -149,14 +151,15 @@
                         android:id="@+id/tv_userPoint"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginEnd="11dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/black"
                         android:textSize="14sp"
+                        android:text="100 Points"
                         app:layout_constraintEnd_toStartOf="@id/img_points"
                         app:layout_constraintTop_toBottomOf="@+id/line_cardView"
-                        tools:text="10.000 points" />
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -214,16 +217,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_btn_desc" />
 
-            <View
+
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/maps"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
-                android:background="@drawable/rectangle"
+                android:clickable="true"
+                android:focusable="true"
+                android:translationZ="-20dp"
+                app:cardCornerRadius="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_booth_location" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_booth_location">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:translationZ="100dp"
+                    />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/maps"
+                    app:layout_constraintEnd_toEndOf="@+id/maps"
+                    app:layout_constraintStart_toStartOf="@+id/maps"
+                    app:layout_constraintTop_toBottomOf="@+id/maps"
+                    tools:context=".MapsActivity" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tv_info"

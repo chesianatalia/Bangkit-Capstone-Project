@@ -238,14 +238,33 @@
             app:layout_constraintStart_toStartOf="@+id/view4"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
 
-        <View
+        <androidx.cardview.widget.CardView
             android:id="@+id/maps"
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:background="@drawable/rectangle"
+            app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="@+id/tv_notes"
             app:layout_constraintStart_toStartOf="@+id/tv_notes"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:translationZ="100dp"
+                android:clickable="true"
+                android:onClick="intentMaps"
+                />
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="@+id/maps"
+                app:layout_constraintEnd_toEndOf="@+id/maps"
+                app:layout_constraintStart_toStartOf="@+id/maps"
+                app:layout_constraintTop_toBottomOf="@+id/maps"
+                tools:context=".MapsActivity" />
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/imageView6"
@@ -263,9 +282,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/black"
+            android:text="Location"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toBottomOf="@+id/maps"
-            tools:text="Kampus ITS Surabaya" />
+            />
 
         <Button
             android:id="@+id/button_confirmation"
