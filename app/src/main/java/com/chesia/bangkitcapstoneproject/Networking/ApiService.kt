@@ -1,9 +1,12 @@
 package com.chesia.bangkitcapstoneproject.Networking
 
+import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.ArrayList
+
 
 interface ApiService {
     @FormUrlEncoded
@@ -29,8 +32,25 @@ interface ApiService {
         @Field("token") token: String
     ): Call<LoginResponse>
 
+    @Multipart
+    @POST("user/trash-report")
+    fun sendTrashReport(
+        @Header("Authorization")token: String,
+        @Part("title") title: RequestBody?,
+        @Part("description") description: RequestBody?,
+        @Part photos: ArrayList<MultipartBody.Part?>,
+        @Part("trashList") trashList: RequestBody?,
+        @Part("point") point: RequestBody?,
+        @Part("collectionPoint") collectionPoint: RequestBody?,
+    ): Call<TrashReportResponse>
+
     @GET("me")
     fun getUserProfile(
         @Header("Authorization") token: String
     ): Call<UserProfileResponse>
+
+    @GET("user/collection-point")
+    fun getMapList(
+        @Header("Authorization") token: String
+    ): Call<MapListResponse>
 }

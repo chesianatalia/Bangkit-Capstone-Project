@@ -89,40 +89,21 @@
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/view" />
-    <ImageButton
-        android:id="@+id/minusPETE"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/Grove3"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toStartOf="@+id/tv_PET"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:srcCompat="@drawable/minus" />
+
+
     <TextView
-        android:id="@+id/tv_PET"
+        android:id="@+id/tvPET"
         android:layout_width="32dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="176dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toStartOf="@+id/plusPETE"
-        app:layout_constraintTop_toTopOf="@+id/view" />
-    <ImageButton
-        android:id="@+id/plusPETE"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/Grove3"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/beratSampah"
-        app:srcCompat="@drawable/plus"
-        />
-
+        app:layout_constraintStart_toEndOf="@+id/PETE"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.6" />
 
     <View
         android:id="@+id/view2"
@@ -155,40 +136,19 @@
         app:layout_constraintStart_toEndOf="@+id/imageHdpe"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
-    <ImageButton
-        android:id="@+id/minusHdpe"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/Grove3"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/tv_HDPE"
-        app:layout_constraintTop_toTopOf="@+id/view2"
-        app:srcCompat="@drawable/minus" />
     <TextView
-        android:id="@+id/tv_HDPE"
+        android:id="@+id/tvHDPE"
         android:layout_width="32dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="172dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/plusHDPE"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
-
-    <ImageButton
-        android:id="@+id/plusHDPE"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/Grove3"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toEndOf="@+id/HDPE"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:srcCompat="@drawable/plus" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <View
         android:id="@+id/view3"
@@ -223,39 +183,20 @@
         app:layout_constraintBottom_toBottomOf="@+id/view3"
         app:layout_constraintStart_toEndOf="@+id/imageOther"
         app:layout_constraintTop_toTopOf="@+id/view3" />
-    <ImageButton
-        android:id="@+id/minusOther"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/Grove3"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toStartOf="@id/tv_OTHERS"
-        app:layout_constraintTop_toTopOf="@+id/view3"
-        app:srcCompat="@drawable/minus" />
+
     <TextView
-        android:id="@+id/tv_OTHERS"
+        android:id="@+id/tvOTHER"
         android:layout_width="32dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="160dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toStartOf="@+id/plusOther"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
-
-    <ImageButton
-        android:id="@+id/plusOther"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/Grove3"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toEndOf="@+id/OTHER"
         app:layout_constraintTop_toTopOf="@+id/view3"
-        app:srcCompat="@drawable/plus" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/notesInput"
@@ -263,7 +204,7 @@
         android:layout_width="350dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="115dp"
         android:background="@color/Grove4"
         app:layout_constraintBottom_toTopOf="@+id/confirm_button"
         app:layout_constraintEnd_toEndOf="@+id/view3"
@@ -315,65 +256,65 @@
 <!--        tools:srcCompat="@tools:sample/avatars" />-->
 
 
-<!--     <TextView-->
-<!--        android:id="@+id/tv_modelresult"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="48dp"-->
-<!--        android:layout_marginTop="76dp"-->
-<!--        android:text="PET:"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+<!--     <TextView
+        android:id="@+id/tv_modelresult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="76dp"
+        android:text="PET:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_modelresult2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="48dp"-->
-<!--        android:layout_marginTop="116dp"-->
-<!--        android:text="HDPE"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+        android:id="@+id/tv_modelresult2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="116dp"
+        android:text="HDPE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_modelresult3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="48dp"-->
-<!--        android:layout_marginTop="156dp"-->
-<!--        android:text="OTHERS:"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+        android:id="@+id/tv_modelresult3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="156dp"
+        android:text="OTHERS:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_HDPE"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="28dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:text="TextView"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tv_modelresult2"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_PET" />-->
+    <TextView
+        android:id="@+id/tv_HDPE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_modelresult2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PET" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_PET"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="36dp"-->
-<!--        android:layout_marginTop="76dp"-->
-<!--        android:text="TextView"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tv_modelresult"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+        android:id="@+id/tv_PET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_modelresult"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_OTHERS"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:text="TextView"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/tv_modelresult3"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_HDPE" />-->
+    <TextView
+        android:id="@+id/tv_OTHERS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_modelresult3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_HDPE" /> -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

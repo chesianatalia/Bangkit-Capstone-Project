@@ -8,5 +8,5 @@ import kotlinx.parcelize.Parcelize
 data class PhotoItem(
     val photoBitmap: Bitmap,
     val photoDate: String,
-    val photoTime: String,
+    var Weight: String,
 ) : Parcelable

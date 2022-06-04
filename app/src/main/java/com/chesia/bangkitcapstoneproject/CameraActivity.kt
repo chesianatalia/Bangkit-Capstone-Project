@@ -102,6 +102,7 @@ class CameraActivity : AppCompatActivity() {
                     cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
                     setResult(PhotoResultListActivity.CAMERA_X_RESULT, intent)
                     startActivity(intent)
+                    finish()
                 }
             }
         )
@@ -126,6 +127,7 @@ class CameraActivity : AppCompatActivity() {
             intent.putExtra("isBackCamera", true)
             setResult(PhotoResultListActivity.CAMERA_X_RESULT, intent)
             startActivity(intent)
+            finish()
 //            binding.previewImageView.setImageURI(selectedImg)
 //            val intent = Intent(this@CameraActivity, PhotoResultListActivity::class.java)
 //            startActivity(intent)

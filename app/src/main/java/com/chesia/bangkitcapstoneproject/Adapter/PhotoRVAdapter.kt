@@ -25,7 +25,7 @@ class PhotoRVAdapter(private val photoList: ArrayList<PhotoItem>) : RecyclerView
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.imgPhoto.setImageBitmap(photoList[position].photoBitmap)
         holder.imgDate.text = photoList[position].photoDate
-        holder.imgTime.text = photoList[position].photoTime
+        holder.imgTime.text = photoList[position].Weight
     }
 
     override fun getItemCount(): Int {
