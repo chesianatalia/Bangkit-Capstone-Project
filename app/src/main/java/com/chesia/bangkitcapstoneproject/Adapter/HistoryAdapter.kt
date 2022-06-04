@@ -10,16 +10,17 @@ import com.chesia.bangkitcapstoneproject.TrashList
 import com.chesia.bangkitcapstoneproject.databinding.ActivityCardHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ItemPhotosBinding
 
-class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>(){
+class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
     private var listHistory: List<TrashReportsItem>? = null
 
 
-    fun setListData(histories: List<TrashReportsItem>?){
+    fun setListData(histories: List<TrashReportsItem>?) {
         this.listHistory = histories
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val view = ActivityCardHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view =
+            ActivityCardHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HistoryViewHolder(view)
     }
 
@@ -29,18 +30,24 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return if(listHistory == null) 0
+        return if (listHistory == null) 0
         else listHistory?.size!!
     }
 
-    //kurang beberapa
-    inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding):
-            RecyclerView.ViewHolder(binding.root){
-                fun bind(history: TrashReportsItem){
-                    binding.apply {
-                        tvStatus.text = history.status
-                        tvDate.text = history.createdAt.toString()
-                    }
-                }
+
+    inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(history: TrashReportsItem) {
+            binding.apply {
+                tvStatus.text = history.status
+                tvDate.text = history.createdAt.toString()
+                tvCategory1.text = history.trashList[0].category
+                tvCategory2.text = history.trashList[1].category
+                tvCategory3.text = history.trashList[2].category
+                tvQuantity1.text = history.trashList[0].quantity.toString()
+                tvQuantity2.text = history.trashList[1].quantity.toString()
+                tvQuantity3.text = history.trashList[2].quantity.toString()
             }
+        }
+    }
 }

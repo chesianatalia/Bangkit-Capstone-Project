@@ -14,14 +14,14 @@ data class CreatedAt(
 	val seconds: Int
 )
 
-@Parcelize
+
 data class TrashListItem(
 //	val createdAt: CreatedAt,
 	val quantity: Int,
 	val photo: String,
 	val category: String,
 	val title: String
-) : Parcelable
+)
 
 //data class Datas(
 //	val trashReports: List<TrashReportsItem>
