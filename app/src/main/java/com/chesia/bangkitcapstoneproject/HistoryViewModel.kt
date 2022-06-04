@@ -20,7 +20,7 @@ class HistoryViewModel : ViewModel(){
                 response: Response<GetTrashResponse>
             ) {
                 if(response.isSuccessful){
-                    listHistories.postValue(response.body()?.data)
+                    listHistories.postValue(response.body()?.data?.trashReports)
                 } else {
                     listHistories.postValue(null)
                 }
