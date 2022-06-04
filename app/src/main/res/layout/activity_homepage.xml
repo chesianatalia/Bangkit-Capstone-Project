@@ -78,6 +78,7 @@
                         android:layout_width="92dp"
                         android:layout_height="92dp"
                         android:padding="1dp"
+                        android:layout_marginStart="4dp"
                         android:src="@drawable/mainlogo_white"
                         android:tint="@color/white"
                         android:alpha="0.8"

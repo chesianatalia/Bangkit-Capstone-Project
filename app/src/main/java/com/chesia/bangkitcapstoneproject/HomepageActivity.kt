@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
@@ -165,9 +166,13 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
             ) {
                 if(response.isSuccessful){
                     Log.d("Response", response.body()?.success.toString())
-                    binding.tvUserName.text = response.body()?.data?.user?.fullname
-                    binding.tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
-                    binding.tvUserEmail.text = response.body()?.data?.user?.email
+                    binding.apply {
+//                        Glide.with(this@HomepageActivity).load(response.body()?.data?.user?.photoUrl).circleCrop().into(binding.imgUser)
+                        tvUserName.text = response.body()?.data?.user?.fullname
+                        tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
+                        tvUserEmail.text = response.body()?.data?.user?.email
+                        tvUserPoint.text = "${response.body()?.data?.user?.status} points"
+                    }
                 }
             }
 
