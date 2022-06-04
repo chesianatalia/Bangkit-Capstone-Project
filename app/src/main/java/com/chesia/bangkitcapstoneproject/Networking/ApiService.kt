@@ -28,4 +28,34 @@ interface ApiService {
         @Field("email") email: String,
         @Field("token") token: String
     ): Call<LoginResponse>
+<<<<<<< Updated upstream
+=======
+
+    @Multipart
+    @POST("user/trash-report")
+    fun sendTrashReport(
+        @Header("Authorization")token: String,
+        @Part("title") title: RequestBody?,
+        @Part("description") description: RequestBody?,
+        @Part photos: ArrayList<MultipartBody.Part?>,
+        @Part("trashList") trashList: RequestBody?,
+        @Part("point") point: RequestBody?,
+        @Part("collectionPoint") collectionPoint: RequestBody?,
+    ): Call<TrashReportResponse>
+
+    @GET("me")
+    fun getUserProfile(
+        @Header("Authorization") token: String
+    ): Call<UserProfileResponse>
+
+    @GET("user/collection-point")
+    fun getMapList(
+        @Header("Authorization") token: String
+    ): Call<MapListResponse>
+
+    @GET("trash-report")
+    fun getHistory(
+        @Header("Authorization") token: String
+    ): Call<GetTrashResponse>
+>>>>>>> Stashed changes
 }
