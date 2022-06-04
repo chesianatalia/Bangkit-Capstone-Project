@@ -48,4 +48,9 @@
     <string name="weight_kg">Weight/Kg</string>
     <string name="bt_up">Next</string>
     <string name="list_photos_title">List Photos</string>
+<<<<<<< Updated upstream
+=======
+    <string name="detailhistory">Detail</string>
+    <string name="plasticweight">Weight/kg</string>
+>>>>>>> Stashed changes
 </resources>
