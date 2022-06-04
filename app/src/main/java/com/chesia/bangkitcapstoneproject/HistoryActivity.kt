@@ -1,26 +1,26 @@
 package com.chesia.bangkitcapstoneproject
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chesia.bangkitcapstoneproject.Adapter.HistoryAdapter
 import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
-import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
-import com.chesia.bangkitcapstoneproject.Networking.GetTrashResponse
-import com.chesia.bangkitcapstoneproject.Networking.TrashReportsItem
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHistoryBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class HistoryActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityHistoryBinding
+    private lateinit var binding: ActivityHistoryBinding
     private lateinit var historyAdapter: HistoryAdapter
     private lateinit var mPreferences: LoginPreferences
-    private val listHistories = MutableLiveData<List<TrashReportsItem>?>()
+    private lateinit var historyViewModel: HistoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,38 +28,60 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        mPreferences = LoginPreferences(this)
+
+        setupView()
+        setupViewModel()
+
+
         binding.btnBackHistory.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
 
+
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
         historyAdapter = HistoryAdapter()
-        binding.rvHistory.layoutManager = LinearLayoutManager(this@HistoryActivity)
-        binding.rvHistory.adapter = historyAdapter
-
-        getHistory(mPreferences.getToken())
-//        historyAdapter.setListData()
-
+        supportActionBar?.hide()
+        binding.apply {
+            rvHistory.layoutManager = LinearLayoutManager(this@HistoryActivity)
+            rvHistory.adapter = historyAdapter
+        }
     }
 
-    private fun getHistory(Token: String){
-        val client = ApiConfig.getApiService().getHistory(token = "Bearer $Token")
-        client.enqueue(object : Callback<GetTrashResponse>{
-            override fun onResponse(
-                call: Call<GetTrashResponse>,
-                response: Response<GetTrashResponse>
-            ) {
-                if(response.isSuccessful){
-                    listHistories.postValue(response.body()?.data)
-                } else {
-                    listHistories.postValue(null)
-                }
+    private fun setupViewModel(){
+        historyViewModel = HistoryViewModel()
+        showLoading(true)
+        historyViewModel.setHistories(mPreferences.getToken())
+        historyViewModel.getHistories().observe(this){
+            if(it!= null){
+                Log.d("TAG", it[0].point.toString())
+                historyAdapter.setListData(it)
+                historyAdapter.notifyDataSetChanged()
+                showLoading(false)
+            } else {
+                showLoading(false)
             }
-
-            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
-                listHistories.postValue(null)
-            }
-        })
-
+        }
     }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
 }

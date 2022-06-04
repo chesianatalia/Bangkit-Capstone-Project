@@ -54,7 +54,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<MapListResponse>
 
-    @GET("trash-report")
+    @GET("user/trash-report")
     fun getHistory(
         @Header("Authorization") token: String
     ): Call<GetTrashResponse>
