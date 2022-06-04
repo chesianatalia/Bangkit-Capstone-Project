@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pagebackground"
+    tools:context=".DetailHistoryActivity">
+
+
+    <ImageView
+        android:id="@+id/btn_back_detail"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_detailhistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_detailhistory" />
+
+    <TextView
+        android:id="@+id/tv_detailhistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:text="@string/detailhistory"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detailhistory"
+        tools:text="On Progress" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status"
+        tools:text="15 Mei 2022" />
+
+    <ImageView
+        android:id="@+id/img_qrcode"
+        android:layout_width="288dp"
+        android:layout_height="288dp"
+        android:layout_marginTop="17dp"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_date"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="@string/plastic_type"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/img_qrcode"
+        app:layout_constraintTop_toBottomOf="@+id/img_qrcode" />
+
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="@string/plasticweight"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_qrcode"
+        app:layout_constraintTop_toBottomOf="@+id/img_qrcode" />
+    
+<!--    <FrameLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/img_qrcode"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/img_qrcode"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_weight">-->
+<!--        -->
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="90dp"-->
+<!--            android:background="@color/black"/>-->
+<!--    </FrameLayout>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/borderRect"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="90dp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/img_qrcode"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_weight"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/img_qrcode"/>-->
+
+<!--    <View-->
+<!--        android:id="@+id/borderRect"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="90dp"-->
+<!--        android:padding="1dp"-->
+<!--        android:background="@drawable/rect_view"-->
+<!--        app:layout_constraintStart_toStartOf="@id/img_qrcode"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_weight"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/img_qrcode"/>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
