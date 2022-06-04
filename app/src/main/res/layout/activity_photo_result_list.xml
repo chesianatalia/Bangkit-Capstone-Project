@@ -4,14 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PhotoResultListActivity">
+    tools:context=".PhotoResultListActivity"
+    android:background="@drawable/pagebackground">
+
+    <TextView
+        android:id="@+id/tv_photoResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/list_photos_title"
+        android:textSize="36sp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
         android:id="@+id/cameraXButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_button2"
+        android:background="@drawable/custom_button3"
         android:elevation="2dp"
         android:padding="8dp"
         android:scaleType="fitCenter"
@@ -22,7 +38,7 @@
         app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_nextbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -52,39 +68,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_button2"
+        android:background="@drawable/custom_button3"
         android:elevation="2dp"
         android:padding="8dp"
         android:scaleType="fitCenter"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cameraXButton3"
+        app:layout_constraintEnd_toEndOf="@id/rv_photos"
         app:layout_constraintTop_toBottomOf="@+id/line_cardView"
-        app:layout_constraintVertical_bias="0.495"
         app:srcCompat="@drawable/ic_baseline_next" />
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_photos"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:layout_marginBottom="5dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/bt_next"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/line_cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_photoResult"
         tools:listitem="@layout/item_photos" />
 
     <View
         android:id="@+id/line_cardView"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
+        app:layout_constraintVertical_bias="0.76"
         android:layout_marginTop="4dp"
-        android:background="@color/Grove4"
+        android:background="@color/Grove1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_photos" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

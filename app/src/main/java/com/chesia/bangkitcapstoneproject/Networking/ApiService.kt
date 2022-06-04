@@ -1,9 +1,12 @@
 package com.chesia.bangkitcapstoneproject.Networking
 
+import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.ArrayList
+
 
 interface ApiService {
     @FormUrlEncoded
@@ -28,8 +31,6 @@ interface ApiService {
         @Field("email") email: String,
         @Field("token") token: String
     ): Call<LoginResponse>
-<<<<<<< Updated upstream
-=======
 
     @Multipart
     @POST("user/trash-report")
@@ -57,5 +58,5 @@ interface ApiService {
     fun getHistory(
         @Header("Authorization") token: String
     ): Call<GetTrashResponse>
->>>>>>> Stashed changes
+
 }

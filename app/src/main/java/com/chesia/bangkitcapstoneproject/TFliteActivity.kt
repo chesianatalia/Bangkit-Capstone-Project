@@ -10,19 +10,28 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
+import com.google.gson.Gson
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class TFliteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTfliteBinding
+    private val trashList = ArrayList<TrashList>()
+    private val categoryList = ArrayList<String>()
     private var imgSize: Int = 224
-
+    var PET = 0
+    var HDPE = 0
+    var Other = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,21 +39,25 @@ class TFliteActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val photoList = intent.getStringArrayListExtra("listuri")
+        Log.d("TFLITEURI", photoList!![0])
+        val quantityList: ArrayList<Int>? = intent.getIntegerArrayListExtra("listqty")
 
-        var PET = 0
-        var HDPE = 0
-        var Other = 0
+
         val size = photoList!!.size
+        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
 
         for (i in 0 until photoList!!.size) {
             if(doInference(convertBmp(getBitmap(contentResolver, Uri.parse(photoList[i]))!!)!!) == "PET"){
-                PET += 1
+                categoryList.add("PET")
+                PET += quantityList!![i]
             }
             if(doInference(convertBmp(getBitmap(contentResolver, Uri.parse(photoList[i]))!!)!!) == "HDPE"){
-                HDPE += 1
+                categoryList.add("HDPE")
+                HDPE += quantityList!![i]
             }
             if(doInference(convertBmp(getBitmap(contentResolver, Uri.parse(photoList[i]))!!)!!) == "Other"){
-                Other += 1
+                categoryList.add("Other")
+                Other += quantityList!![i]
             }
         }
 
@@ -52,12 +65,39 @@ class TFliteActivity : AppCompatActivity() {
 
         binding.tvPET.text = PET.toString()
         binding.tvHDPE.text = HDPE.toString()
-        binding.tvOTHERS.text = Other.toString()
-        
+        binding.tvOTHER.text = Other.toString()
+
       binding.confirmButton.setOnClickListener{
+          for(i in 0 until photoList!!.size){
+              trashList.add(TrashList("Sampah " + (i+1), categoryList[i], quantityList!![i], currentDate))
+          }
+          val gson = Gson()
+          val trashListJson = gson.toJson(trashList)
+
+          Log.d("JSON", trashListJson)
+
         val intent = Intent(this, ConfirmationActivity::class.java)
+          intent.putExtra("totalPET", PET)
+          intent.putExtra("totalHDPE", HDPE)
+          intent.putExtra("totalOTHER", Other)
+          intent.putExtra("note", binding.notesInput.editText!!.text.toString())
+          intent.putExtra("trashlist", trashListJson)
+          intent.putExtra("photolist", photoList)
+          intent.putExtra("categorylist", categoryList)
         startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this@TFliteActivity)
+        builder.setMessage("Cancel process?")
+            .setCancelable(false)
+            .setPositiveButton("Confirm") { dialog, id ->
+                finish()
+            }
+            .setNegativeButton("No", null)
+        val alert = builder.create()
+        alert.show()
     }
 
     private fun doInference(bmp: Bitmap) : String{
@@ -137,6 +177,4 @@ class TFliteActivity : AppCompatActivity() {
     private fun convertBmp(bitmap: Bitmap): Bitmap? {
         return bitmap.copy(Bitmap.Config.RGB_565, false)
     }
-
-  
 }
