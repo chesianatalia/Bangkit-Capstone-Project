@@ -48,7 +48,8 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".PhotoResultListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
