@@ -43,4 +43,12 @@
     <string name="open">buka</string>
     <string name="close">tutup</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="wasteList">List Sampah Kamu</string>
+    <string name="plastic_type">Jenis Plastik</string>
+    <string name="weight_kg">berat/Kg</string>
+    <string name="bt_up">Lanjut</string>
+    <string name="list_photos_title">List Foto</string>
+    <string name="detailhistory">Detail</string>
+    <string name="plasticweight">Berat/kg</string>
 </resources>

@@ -35,7 +35,7 @@ data class UpdatedAt(
 data class TrashReportsItem(
 	val createdAt: CreatedAt,
 	val collectionPoint: String,
-	val trashList: ArrayList<TrashListItem>,
+	val trashList: List<TrashListItem>,
 	val description: String,
 	val id: String,
 	val title: String,
