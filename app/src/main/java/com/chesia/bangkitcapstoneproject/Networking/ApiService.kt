@@ -1,5 +1,6 @@
 package com.chesia.bangkitcapstoneproject.Networking
 
+import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -47,4 +48,9 @@ interface ApiService {
     fun getUserProfile(
         @Header("Authorization") token: String
     ): Call<UserProfileResponse>
+
+    @GET("user/collection-point")
+    fun getMapList(
+        @Header("Authorization") token: String
+    ): Call<MapListResponse>
 }
