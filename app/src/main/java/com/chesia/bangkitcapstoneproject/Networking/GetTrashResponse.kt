@@ -4,8 +4,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 data class GetTrashResponse(
-//	val data: Datas,
-	val data: List<TrashReportsItem>,
+	val data: Datas,
+//	val data: List<TrashReportsItem>,
 	val success: Boolean
 )
 
@@ -19,13 +19,13 @@ data class TrashListItem(
 //	val createdAt: CreatedAt,
 	val quantity: Int,
 	val photo: String,
-	val category: String,
+	val category: String?,
 	val title: String
 )
 
-//data class Datas(
-//	val trashReports: List<TrashReportsItem>
-//)
+data class Datas(
+	val trashReports: List<TrashReportsItem>
+)
 
 data class UpdatedAt(
 	val nanoseconds: Int,
