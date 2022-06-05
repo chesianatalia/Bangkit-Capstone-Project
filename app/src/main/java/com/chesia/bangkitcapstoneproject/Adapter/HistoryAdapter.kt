@@ -1,9 +1,13 @@
 package com.chesia.bangkitcapstoneproject.Adapter
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.chesia.bangkitcapstoneproject.DetailHistoryActivity
 import com.chesia.bangkitcapstoneproject.Networking.TrashListItem
 import com.chesia.bangkitcapstoneproject.Networking.TrashReportsItem
 import com.chesia.bangkitcapstoneproject.R
@@ -48,7 +52,23 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
                     }
 
+                    itemView.setOnClickListener{
+                        val intent = Intent(itemView.context, DetailHistoryActivity::class.java).also {
+                            it.putExtra(DetailHistoryActivity.EXTRA_STATUS, history.status)
+                            it.putExtra(DetailHistoryActivity.EXTRA_DESCRIPTION, history.description)
+                            it.putExtra(DetailHistoryActivity.EXTRA_POINT, history.point.toString())
+                            it.putExtra(DetailHistoryActivity.EXTRA_PHOTO, history.trashList[0].photo)
+                        }
+                        itemView.context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
+                            .toBundle())
+
+                    }
+
                 }
+
+    }
+
+    companion object{
 
     }
 
