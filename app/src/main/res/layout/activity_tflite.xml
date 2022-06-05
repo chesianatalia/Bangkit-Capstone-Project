@@ -24,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="350dp"
@@ -62,35 +63,35 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="350dp"
-            android:layout_height="35dp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/beratSampah"
-            app:layout_constraintStart_toStartOf="@+id/jenisSampah"
-            app:layout_constraintTop_toBottomOf="@+id/jenisSampah" />
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="30dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            app:srcCompat="@drawable/pete_icon" />
-        <TextView
-            android:id="@+id/PETE"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:text="PETE"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/beratSampah"
+        app:layout_constraintStart_toStartOf="@+id/jenisSampah"
+        app:layout_constraintTop_toBottomOf="@+id/jenisSampah" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:srcCompat="@drawable/pete_icon" />
+    <TextView
+        android:id="@+id/PETE"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:text="PETE"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
 
         <TextView
@@ -138,19 +139,20 @@
             app:layout_constraintStart_toEndOf="@+id/imageHdpe"
             app:layout_constraintTop_toTopOf="@+id/view2" />
 
-        <TextView
-            android:id="@+id/tvHDPE"
-            android:layout_width="32dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="172dp"
-            android:text="0"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintStart_toEndOf="@+id/HDPE"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.6" />
+    <TextView
+        android:id="@+id/tvHDPE"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="172dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toEndOf="@+id/HDPE"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.6" />
+
 
         <View
             android:id="@+id/view3"
@@ -185,6 +187,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/view3"
             app:layout_constraintStart_toEndOf="@+id/imageOther"
             app:layout_constraintTop_toTopOf="@+id/view3" />
+
 
         <TextView
             android:id="@+id/tvOTHER"
