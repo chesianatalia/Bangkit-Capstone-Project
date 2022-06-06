@@ -38,24 +38,13 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
 
         val listCat = ArrayList<String>()
-        val listQua = ArrayList<Int>()
+        val listQty = ArrayList<Int>()
         for (i in 0 until listHistories?.get(position)!!.trashList.size) {
             listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
-            listQua.add(listHistories?.get(position)!!.trashList[i].quantity)
+            listQty.add(listHistories?.get(position)!!.trashList[i].quantity)
         }
-        val listCat_ = listCat.toSet().toList()
-        val listCatUnique = mutableListOf(" ", " ", " ")
-        val listQtyUnique = mutableListOf(0, 0, 0)
 
-        if(listCat_.contains("PET")){
-            listCatUnique[0] = "PET"
-        }
-        if(listCat_.contains("HDPE")){
-            listCatUnique[1] = "HDPE"
-        }
-        if(listCat_.contains("Other")){
-            listCatUnique[2] = "Other"
-        }
+        val listQtyUnique = mutableListOf(0, 0, 0)
 
         for (i in listQty.indices) {
             if(listCat[i] == "PET"){
@@ -69,7 +58,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
             }
         }
 
-        holder.bind(listHistories?.get(position)!!, listCatUnique, listQuaUnique)
+        holder.bind(listHistories?.get(position)!!, listQtyUnique)
     }
 
     override fun getItemCount(): Int {
