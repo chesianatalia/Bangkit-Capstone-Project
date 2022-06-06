@@ -35,16 +35,26 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val listCat = ArrayList<String>()
+        val listQua = ArrayList<String>()
         for(i in 0 until listHistories?.get(position)!!.trashList.size){
             listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
+            listQua.add(listHistories?.get(position)!!.trashList[i].quantity.toString())
         }
         val listCat_ = listCat.toSet().toList()
         val listCatUnique = mutableListOf("a", " ", " ")
 
+        val listQua_ = listQua.toSet().toList()
+        val listQuaUnique = mutableListOf("z", " ", " ")
+
         for(i in listCat_.indices){
             listCatUnique[i] = listCat_[i]
         }
-        holder.bind(listHistories?.get(position)!!, listCatUnique)
+
+        for (i in listQua_.indices){
+            listQuaUnique[i] = listQua_[i]
+        }
+
+        holder.bind(listHistories?.get(position)!!, listCatUnique, listQuaUnique)
     }
 
     override fun getItemCount(): Int {
@@ -54,7 +64,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
             RecyclerView.ViewHolder(binding.root){
-                fun bind(history: TrashReportsItem, listCat: MutableList<String>){
+                fun bind(history: TrashReportsItem, listCat: MutableList<String>, listQua:MutableList<String>){
                     binding.apply {
                         tvStatus.text = history.status
                         tvQuantity1.text = history.trashList[0].quantity.toString()
@@ -63,6 +73,10 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                         tvCategory1.text = listCat[0]
                         tvCategory2.text = listCat[1]
                         tvCategory3.text = listCat[2]
+
+                        tvQuantity1.text = listQua[0]
+                        tvQuantity2.text = listQua[1]
+                        tvQuantity3.text = listQua[2]
 
                         Glide.with(itemView)
                             .load(history.trashList[0].photo)
