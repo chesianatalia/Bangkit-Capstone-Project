@@ -1,5 +1,5 @@
 package com.chesia.bangkitcapstoneproject
-
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +31,9 @@ class DetailHistoryActivity : AppCompatActivity() {
                 .load(qrBitmap)
                 .into(imgQrcode)
         }
+        binding.btnBackDetail.setOnClickListener {
+            val intent = Intent(this@DetailHistoryActivity,HistoryActivity::class.java)
+            startActivity(intent)
     }
 
     companion object{
