@@ -11,7 +11,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 
 class DetailHistoryActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityDetailHistoryBinding
+    private lateinit var binding: ActivityDetailHistoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +32,12 @@ class DetailHistoryActivity : AppCompatActivity() {
                 .into(imgQrcode)
         }
         binding.btnBackDetail.setOnClickListener {
-            val intent = Intent(this@DetailHistoryActivity,HistoryActivity::class.java)
+            val intent = Intent(this@DetailHistoryActivity, HistoryActivity::class.java)
             startActivity(intent)
+        }
     }
 
-    companion object{
+    companion object {
         const val EXTRA_CATEGORY = "extra_category"
         const val EXTRA_PHOTO = "extra_photo"
         const val EXTRA_DESCRIPTION = "extra_description"
