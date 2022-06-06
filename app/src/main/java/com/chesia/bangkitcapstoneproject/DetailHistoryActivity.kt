@@ -28,7 +28,6 @@ class DetailHistoryActivity : AppCompatActivity() {
 
     companion object{
         const val EXTRA_CATEGORY = "extra_category"
-        const val EXTRA_PHOTO = "extra_photo"
         const val EXTRA_DESCRIPTION = "extra_description"
         const val EXTRA_QUANTITY = "extra_quantity"
         const val EXTRA_POINT = "extra_poin"

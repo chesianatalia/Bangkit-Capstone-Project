@@ -76,8 +76,15 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(binding.toolbar)
 
         mPreferences = LoginPreferences(this)
+<<<<<<< Updated upstream
         getUserData(mPreferences.getToken())
         getPointUser(mPreferences.getToken())
+=======
+        val token = mPreferences.getToken()
+        getUserData(token)
+//        getPointUser(token)
+        getNews(token)
+>>>>>>> Stashed changes
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -185,6 +192,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
+<<<<<<< Updated upstream
     private fun getPointUser(token:String){
         ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
             override fun onResponse(
@@ -202,6 +210,28 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         })
     }
+=======
+//    private fun getPointUser(token:String){
+//        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
+//            override fun onResponse(
+//                call: Call<GetTrashResponse>,
+//                response: Response<GetTrashResponse>
+//            ) {
+//                if(response.isSuccessful){
+//                    if(response.body()?.data?.trashReports?.get(0)?.point ?: =null){
+//
+//                    }
+//                    binding.tvUserPoint.text = "${response.body()?.data?.trashReports?.get(0)?.point} points"
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
+//                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
+//    }
+>>>>>>> Stashed changes
 
     override fun onMapReady(p0: GoogleMap) {
         mMap = p0
