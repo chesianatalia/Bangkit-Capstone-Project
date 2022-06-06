@@ -1,20 +1,26 @@
 package com.chesia.bangkitcapstoneproject
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.bumptech.glide.Glide
+import com.chesia.bangkitcapstoneproject.databinding.ActivityDetailHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHistoryBinding
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 
 class DetailHistoryActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityHistoryBinding
+    private lateinit var binding : ActivityDetailHistoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHistoryBinding.inflate(layoutInflater)
+        binding = ActivityDetailHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-<<<<<<< Updated upstream
-=======
+
+        val id = intent.getStringExtra(EXTRA_ID)
+        val barcodeEncoder = BarcodeEncoder()
+        val qrBitmap = barcodeEncoder.encodeBitmap(id, BarcodeFormat.QR_CODE, 512, 512)
 
         binding.apply {
             tvStatus.text = intent.getStringExtra(EXTRA_STATUS)
@@ -22,14 +28,12 @@ class DetailHistoryActivity : AppCompatActivity() {
             tvPoints.text = intent.getStringExtra(EXTRA_POINT)
 
             Glide.with(this@DetailHistoryActivity)
-                .load(intent.getStringExtra(EXTRA_PHOTO))
+                .load(qrBitmap)
                 .into(imgQrcode)
         }
-
         binding.btnBackDetail.setOnClickListener {
             val intent = Intent(this@DetailHistoryActivity,HistoryActivity::class.java)
             startActivity(intent)
-        }
     }
 
     companion object{
@@ -39,6 +43,6 @@ class DetailHistoryActivity : AppCompatActivity() {
         const val EXTRA_QUANTITY = "extra_quantity"
         const val EXTRA_POINT = "extra_poin"
         const val EXTRA_STATUS = "extra_status"
->>>>>>> Stashed changes
+        const val EXTRA_ID = "extra_id"
     }
 }
