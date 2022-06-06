@@ -14,10 +14,15 @@ import com.chesia.bangkitcapstoneproject.R
 import com.chesia.bangkitcapstoneproject.TrashList
 import com.chesia.bangkitcapstoneproject.databinding.ActivityCardHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ItemPhotosBinding
+import kotlin.properties.Delegates
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     private var listHistories : List<TrashReportsItem>? = null
+    private var isPET = false
+    private var isHDPE = false
+    private var isOther = false
+
 
     fun setListData(histories: List<TrashReportsItem>?){
         this.listHistories = histories
@@ -41,10 +46,31 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
             RecyclerView.ViewHolder(binding.root){
                 fun bind(history: TrashReportsItem){
+                    for(i in 0 until history.trashList.size){
+                        if(history.trashList[i].category == "PET"){
+                            isPET = true
+                        }
+                        if(history.trashList[i].category == "HDPE"){
+                            isHDPE = true
+                        }
+                        if(history.trashList[i].category == "Other"){
+                            isOther = true
+                        }
+                    }
+
                     binding.apply {
                         tvStatus.text = history.status
-                        tvCategory1.text = history.trashList[0]?.category
-                        tvQuantity1.text = history.trashList[0].quantity?.toString()
+                        if(isPET){
+                            tvCategory1.text = "PET"
+                        }
+                        if(isHDPE){
+                            tvCategory2.text = "HDPE"
+                        }
+                        if(isOther){
+                            tvCategory3.text = "Other"
+                        }
+                        tvQuantity1.text = history.trashList[0].quantity.toString()
+                        tvStatus.text = history.status
 
                         Glide.with(itemView)
                             .load(history.trashList[0].photo)
