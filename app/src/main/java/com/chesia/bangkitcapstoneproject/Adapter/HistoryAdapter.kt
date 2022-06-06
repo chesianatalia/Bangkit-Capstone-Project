@@ -45,17 +45,28 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
         }
         val listCat_ = listCat.toSet().toList()
         val listCatUnique = mutableListOf(" ", " ", " ")
+        val listQtyUnique = mutableListOf(0, 0, 0)
 
-        val listQua_ = listQua.toSet().toList()
-        val listQuaUnique = mutableListOf(1, 1, 1)
-
-        for (i in listCat_.indices) {
-            listCatUnique[i] = listCat_[i]
+        if(listCat_.contains("PET")){
+            listCatUnique[0] = "PET"
+        }
+        if(listCat_.contains("HDPE")){
+            listCatUnique[1] = "HDPE"
+        }
+        if(listCat_.contains("Other")){
+            listCatUnique[2] = "Other"
         }
 
-        for (i in listQua_.indices) {
-
-            listQuaUnique[i] = listQua_[i]
+        for (i in listQty.indices) {
+            if(listCat[i] == "PET"){
+                listQtyUnique[0] = listQtyUnique[0] + listQty[i]
+            }
+            if(listCat[i] == "HDPE"){
+                listQtyUnique[1] = listQtyUnique[1] + listQty[i]
+            }
+            if(listCat[i].lowercase() == "other"){
+                listQtyUnique[2] = listQtyUnique[2] + listQty[i]
+            }
         }
 
         holder.bind(listHistories?.get(position)!!, listCatUnique, listQuaUnique)
@@ -67,12 +78,10 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     }
 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
-
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             history: TrashReportsItem,
-            listCat: MutableList<String>,
-            listQua: MutableList<Int>
+            listQty: MutableList<Int>
         ) {
 
             val barcodeEncoder = BarcodeEncoder()
@@ -83,18 +92,13 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                 tvQuantity1.text = history.trashList[0].quantity.toString()
                 tvStatus.text = history.status
 
-                tvCategory1.text = listCat[0]
-                tvCategory2.text = listCat[1]
-                tvCategory3.text = listCat[2]
+                tvCategory1.text = "PET"
+                tvCategory2.text = "HDPE"
+                tvCategory3.text = "Other"
 
-                if (listCat[1] == " " && listCat[2] == " ") {
-                    listQua[0] = listQua[0] + listQua[1] + listQua[2]
-
-                    tvQuantity1.text = listQua[0].toString()
-                }
-//                tvQuantity1.text = listQua[0].toString()
-//                tvQuantity2.text = listQua[1].toString()
-//                tvQuantity3.text = listQua[2].toString()
+                tvQuantity1.text = listQty[0].toString()
+                tvQuantity2.text = listQty[1].toString()
+                tvQuantity3.text = listQty[2].toString()
 
                 Glide.with(itemView)
                     .load(qrBitmap)
@@ -114,15 +118,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                     ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
                         .toBundle()
                 )
-
             }
-
         }
-
     }
-
-    companion object {
-
-    }
-
 }
