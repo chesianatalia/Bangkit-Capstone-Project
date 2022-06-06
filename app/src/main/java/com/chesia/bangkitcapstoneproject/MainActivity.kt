@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -173,6 +174,8 @@ class MainActivity : AppCompatActivity() {
                     user!!.getIdToken(true).addOnSuccessListener { result ->
                         val idToken = result.token
                         val client = ApiConfig.getApiService().loginwithgoogle(user!!.email.toString(), idToken!!)
+                        Log.d("GTOKEN", idToken)
+                        Log.d("GTOKEN", user!!.email.toString())
                         client.enqueue(object : Callback<LoginResponse>{
                             override fun onResponse(
                                 call: Call<LoginResponse>,
@@ -181,8 +184,6 @@ class MainActivity : AppCompatActivity() {
                                 setProgressBar(false)
                                 if(response.isSuccessful && response.body()!!.data != null){
                                     mPreferences.setToken(response.body()!!.data!!.token)
-                                    Log.d("respToken", response.body()!!.data!!.token)
-                                    Log.d("GTOKEN", idToken)
                                     val intent = Intent(this@MainActivity, HomepageActivity::class.java);
                                     startActivity(intent)
                                     finish()
@@ -208,6 +209,10 @@ class MainActivity : AppCompatActivity() {
 
                             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                                 Toast.makeText(this@MainActivity, "An error occurred", Toast.LENGTH_SHORT).show()
+                                auth.signOut()
+
+                                googleSignInClient.signOut().addOnCompleteListener(this@MainActivity
+                                ) {}
                                 Log.d("NetworkError", "ERROR: ${t.message}")
                             }
 
