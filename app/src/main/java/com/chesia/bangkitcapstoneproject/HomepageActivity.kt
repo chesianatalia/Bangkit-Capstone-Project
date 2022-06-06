@@ -23,6 +23,7 @@ import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.GetTrashResponse
 import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
+import com.chesia.bangkitcapstoneproject.Networking.Newslist.NewsListResponse
 import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -76,8 +77,10 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(binding.toolbar)
 
         mPreferences = LoginPreferences(this)
-        getUserData(mPreferences.getToken())
-        getPointUser(mPreferences.getToken())
+        val token = mPreferences.getToken()
+        getUserData(token)
+        getPointUser(token)
+        getNews(token)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -158,6 +161,25 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun getNews(token: String) {
+        ApiConfig.getApiService().getNewsList(token = "Bearer $token")
+            .enqueue(object : Callback<NewsListResponse> {
+                override fun onResponse(
+                    call: Call<NewsListResponse>,
+                    response: Response<NewsListResponse>
+                ) {
+                    if(response.isSuccessful && response.body() != null){
+                        Glide.with(this@HomepageActivity).load(response.body()!!.data!!.news!![0]!!.image).fitCenter().into(binding.imgNews)
+                        binding.tvNews.text = response.body()!!.data!!.news!![0]!!.description
+                    }
+                }
+
+                override fun onFailure(call: Call<NewsListResponse>, t: Throwable) {
+                    Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
     private fun getUserData(token:String){
 
         ApiConfig.getApiService().getUserProfile(token = "Bearer $token")
@@ -179,7 +201,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
-                Log.d("Error", ": ${t.message}")
+                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -197,7 +219,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
-                Log.d("Error", ": ${t.message}")
+                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
             }
 
         })
