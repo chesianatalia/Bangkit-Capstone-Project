@@ -85,9 +85,10 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(binding.toolbar)
 
         mPreferences = LoginPreferences(this)
+
         val token = mPreferences.getToken()
         getUserData(token)
-        getPointUser(token)
+//         getPointUser(token)
         getNews(token)
 
         val gso = GoogleSignInOptions
@@ -98,7 +99,6 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = Firebase.auth
-
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -235,29 +235,28 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
-    private fun getPointUser(token:String){
-        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
-            override fun onResponse(
-                call: Call<GetTrashResponse>,
-                response: Response<GetTrashResponse>
-            ) {
-                if(response.isSuccessful){
-                    val point: Int
-                    if(response.body()!!.data.trashReports.isEmpty()){
-                        point = 0
-                    }else{
-                        point = response.body()?.data?.trashReports?.get(0)?.point!!
-                    }
-                    binding.tvUserPoint.text = "$point points"
-                }
-            }
 
-            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
-                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
-            }
+//    private fun getPointUser(token:String){
+//        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
+//            override fun onResponse(
+//                call: Call<GetTrashResponse>,
+//                response: Response<GetTrashResponse>
+//            ) {
+//                if(response.isSuccessful){
+//                    if(response.body()?.data?.trashReports?.get(0)?.point ?: =null){
+//
+//                    }
+//                    binding.tvUserPoint.text = "${response.body()?.data?.trashReports?.get(0)?.point} points"
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
+//                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
+//    }
 
-        })
-    }
 
     override fun onMapReady(p0: GoogleMap) {
         mMap = p0

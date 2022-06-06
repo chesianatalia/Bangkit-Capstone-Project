@@ -17,11 +17,12 @@ import com.chesia.bangkitcapstoneproject.databinding.ActivityCardHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ItemPhotosBinding
 import java.util.ArrayList
 import kotlin.properties.Delegates
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
-    private var listHistories : List<TrashReportsItem>? = null
-
+    private var listHistories: List<TrashReportsItem>? = null
 
     fun setListData(histories: List<TrashReportsItem>?){
         this.listHistories = histories
@@ -29,32 +30,21 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val view = ActivityCardHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view =
+            ActivityCardHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HistoryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        val listCat = ArrayList<String>()
-<<<<<<< Updated upstream
-        for(i in 0 until listHistories?.get(position)!!.trashList.size){
-            listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
-=======
-        val listQty = ArrayList<Int>()
 
+        val listCat = ArrayList<String>()
+        val listQua = ArrayList<Int>()
         for (i in 0 until listHistories?.get(position)!!.trashList.size) {
             listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
-            listQty.add(listHistories?.get(position)!!.trashList[i].quantity)
->>>>>>> Stashed changes
+            listQua.add(listHistories?.get(position)!!.trashList[i].quantity)
         }
         val listCat_ = listCat.toSet().toList()
         val listCatUnique = mutableListOf(" ", " ", " ")
-
-<<<<<<< Updated upstream
-        for(i in listCat_.indices){
-            listCatUnique[i] = listCat_[i]
-        }
-        holder.bind(listHistories?.get(position)!!, listCatUnique)
-=======
         val listQtyUnique = mutableListOf(0, 0, 0)
 
         if(listCat_.contains("PET")){
@@ -79,56 +69,15 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
             }
         }
 
-        holder.bind(listHistories?.get(position)!!, listQtyUnique)
->>>>>>> Stashed changes
+        holder.bind(listHistories?.get(position)!!, listCatUnique, listQuaUnique)
     }
 
     override fun getItemCount(): Int {
-        return if(listHistories == null) 0
+        return if (listHistories == null) 0
         else listHistories!!.size
     }
 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
-            RecyclerView.ViewHolder(binding.root){
-                fun bind(history: TrashReportsItem, listCat: MutableList<String>){
-                    binding.apply {
-                        tvStatus.text = history.status
-                        tvQuantity1.text = history.trashList[0].quantity.toString()
-                        tvStatus.text = history.status
-
-                        tvCategory1.text = listCat[0]
-                        tvCategory2.text = listCat[1]
-                        tvCategory3.text = listCat[2]
-
-                        Glide.with(itemView)
-                            .load(history.trashList[0].photo)
-                            .into(imgBarcode)
-
-                    }
-
-                    itemView.setOnClickListener{
-                        val intent = Intent(itemView.context, DetailHistoryActivity::class.java).also {
-                            it.putExtra(DetailHistoryActivity.EXTRA_STATUS, history.status)
-                            it.putExtra(DetailHistoryActivity.EXTRA_DESCRIPTION, history.description)
-                            it.putExtra(DetailHistoryActivity.EXTRA_POINT, history.point.toString())
-                            it.putExtra(DetailHistoryActivity.EXTRA_PHOTO, history.trashList[0].photo)
-                            it.putExtra(DetailHistoryActivity.EXTRA_ID, history.id)
-                        }
-                        itemView.context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
-                            .toBundle())
-
-                    }
-
-<<<<<<< Updated upstream
-                }
-
-    }
-
-    companion object{
-
-    }
-
-=======
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             history: TrashReportsItem,
@@ -172,5 +121,4 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
             }
         }
     }
->>>>>>> Stashed changes
 }
