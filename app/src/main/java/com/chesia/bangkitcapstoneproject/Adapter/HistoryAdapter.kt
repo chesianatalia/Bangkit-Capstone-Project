@@ -55,7 +55,6 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
             RecyclerView.ViewHolder(binding.root){
                 fun bind(history: TrashReportsItem, listCat: MutableList<String>){
-                    Log.d("LISTCAT", listCat.toString())
                     binding.apply {
                         tvStatus.text = history.status
                         tvQuantity1.text = history.trashList[0].quantity.toString()
