@@ -98,7 +98,6 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = Firebase.auth
-        val user = auth.currentUser
 
 
         val mapFragment = supportFragmentManager
