@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BangkitCapstoneProject</string>
+    <string name="app_name">rePLASC</string>
     <string name="nama_apk">REPLASC</string>
     <string name="hint_email">Surel</string>
     <string name="hint_password">Kata Sandi</string>

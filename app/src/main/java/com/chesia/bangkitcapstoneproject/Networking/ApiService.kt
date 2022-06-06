@@ -30,7 +30,7 @@ interface ApiService {
     @POST("sign-in")
     fun loginwithgoogle(
         @Field("email") email: String,
-        @Field("token") token: String
+        @Field("googleToken") googleToken: String
     ): Call<LoginResponse>
 
     @Multipart
