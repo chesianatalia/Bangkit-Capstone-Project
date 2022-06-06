@@ -17,6 +17,8 @@ import com.chesia.bangkitcapstoneproject.databinding.ActivityCardHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ItemPhotosBinding
 import java.util.ArrayList
 import kotlin.properties.Delegates
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
@@ -65,6 +67,10 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
             RecyclerView.ViewHolder(binding.root){
                 fun bind(history: TrashReportsItem, listCat: MutableList<String>, listQua:MutableList<String>){
+
+                    val barcodeEncoder = BarcodeEncoder()
+                    val qrBitmap = barcodeEncoder.encodeBitmap(history.id, BarcodeFormat.QR_CODE, 512, 512)
+
                     binding.apply {
                         tvStatus.text = history.status
                         tvQuantity1.text = history.trashList[0].quantity.toString()
@@ -79,7 +85,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                         tvQuantity3.text = listQua[2]
 
                         Glide.with(itemView)
-                            .load(history.trashList[0].photo)
+                            .load(qrBitmap)
                             .into(imgBarcode)
 
                     }
