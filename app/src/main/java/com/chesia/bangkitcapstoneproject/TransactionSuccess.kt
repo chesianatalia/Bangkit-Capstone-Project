@@ -13,6 +13,11 @@ class TransactionSuccess : AppCompatActivity() {
         binding = ActivityTransactionSuccessBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.viewStatus.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.backHome.setOnClickListener{
             val intent = Intent(this, HomepageActivity::class.java)
             startActivity(intent)

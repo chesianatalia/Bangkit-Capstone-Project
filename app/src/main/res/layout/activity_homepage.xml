@@ -78,6 +78,7 @@
                         android:layout_width="92dp"
                         android:layout_height="92dp"
                         android:padding="1dp"
+                        android:layout_marginStart="4dp"
                         android:src="@drawable/mainlogo_white"
                         android:tint="@color/white"
                         android:alpha="0.8"
@@ -264,6 +265,7 @@
                 app:layout_constraintTop_toBottomOf="@id/maps" />
 
             <View
+                android:id="@+id/img_news"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginStart="40dp"
@@ -272,6 +274,16 @@
                 android:background="@drawable/rectangle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_info" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="         "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_news"/>
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

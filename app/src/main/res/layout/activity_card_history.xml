@@ -32,8 +32,8 @@
 
         <ImageView
             android:id="@+id/img_barcode"
-            android:layout_width="97dp"
-            android:layout_height="97dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="17dp"
             cardview:layout_constraintStart_toStartOf="parent"
             cardview:layout_constraintTop_toBottomOf="@id/tv_status"
@@ -55,7 +55,7 @@
             tools:text="15 Mei 2022" />
 
         <TextView
-            android:id="@+id/tv_PETE"
+            android:id="@+id/tv_Category1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="19dp"
@@ -63,10 +63,67 @@
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
-            cardview:layout_constraintEnd_toEndOf="parent"
             cardview:layout_constraintStart_toEndOf="@id/img_barcode"
             cardview:layout_constraintTop_toBottomOf="@id/tv_date"
-            tools:text="PETE\nHDPE\nOTHERS" />
+            tools:text="PETE" />
+
+        <TextView
+            android:id="@+id/tv_Category2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            cardview:layout_constraintStart_toStartOf="@+id/tv_Category1"
+            cardview:layout_constraintTop_toBottomOf="@+id/tv_Category1"
+            tools:text="HDPE" />
+
+        <TextView
+            android:id="@+id/tv_Category3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            cardview:layout_constraintStart_toStartOf="@+id/tv_Category2"
+            cardview:layout_constraintTop_toBottomOf="@+id/tv_Category2"
+            tools:text="OTHER" />
+
+        <TextView
+            android:id="@+id/tv_Quantity1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            cardview:layout_constraintBottom_toBottomOf="@+id/tv_Category1"
+            cardview:layout_constraintEnd_toEndOf="parent"
+            cardview:layout_constraintTop_toTopOf="@+id/tv_Category1"
+            tools:text="5 Kg" />
+
+        <TextView
+            android:id="@+id/tv_Quantity2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            cardview:layout_constraintBottom_toBottomOf="@+id/tv_Category2"
+            cardview:layout_constraintEnd_toEndOf="parent"
+            cardview:layout_constraintTop_toTopOf="@+id/tv_Category2"
+            tools:text="7 Kg" />
+        <TextView
+            android:id="@+id/tv_Quantity3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            cardview:layout_constraintBottom_toBottomOf="@+id/tv_Category3"
+            cardview:layout_constraintEnd_toEndOf="parent"
+            cardview:layout_constraintTop_toTopOf="@+id/tv_Category3"
+            tools:text="1 Kg" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

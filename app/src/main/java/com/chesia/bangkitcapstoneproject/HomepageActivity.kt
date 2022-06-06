@@ -18,8 +18,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
+import com.chesia.bangkitcapstoneproject.Networking.GetTrashResponse
 import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
 import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
@@ -75,6 +77,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mPreferences = LoginPreferences(this)
         getUserData(mPreferences.getToken())
+        getPointUser(mPreferences.getToken())
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -165,13 +168,35 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
             ) {
                 if(response.isSuccessful){
                     Log.d("Response", response.body()?.success.toString())
-                    binding.tvUserName.text = response.body()?.data?.user?.fullname
-                    binding.tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
-                    binding.tvUserEmail.text = response.body()?.data?.user?.email
+                    binding.apply {
+//                        Glide.with(this@HomepageActivity).load(response.body()?.data?.user?.photoUrl).circleCrop().into(binding.imgUser)
+                        tvUserName.text = response.body()?.data?.user?.fullname
+                        tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
+                        tvUserEmail.text = response.body()?.data?.user?.email
+//                        tvUserPoint.text = "${response.body()?.data?.user?.status} points"
+                    }
                 }
             }
 
             override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
+                Log.d("Error", ": ${t.message}")
+            }
+
+        })
+    }
+
+    private fun getPointUser(token:String){
+        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
+            override fun onResponse(
+                call: Call<GetTrashResponse>,
+                response: Response<GetTrashResponse>
+            ) {
+                if(response.isSuccessful){
+                    binding.tvUserPoint.text = "${response.body()?.data?.trashReports?.get(0)?.point} points"
+                }
+            }
+
+            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
                 Log.d("Error", ": ${t.message}")
             }
 

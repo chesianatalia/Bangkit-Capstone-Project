@@ -23,6 +23,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     private var isHDPE = false
     private var isOther = false
 
+
     fun setListData(histories: List<TrashReportsItem>?){
         this.listHistories = histories
     }
@@ -69,6 +70,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                             tvCategory3.text = "Other"
                         }
                         tvQuantity1.text = history.trashList[0].quantity.toString()
+                        tvStatus.text = history.status
 
                         Glide.with(itemView)
                             .load(history.trashList[0].photo)
