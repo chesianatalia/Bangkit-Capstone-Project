@@ -39,7 +39,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
             listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
         }
         val listCat_ = listCat.toSet().toList()
-        val listCatUnique = mutableListOf("a", " ", " ")
+        val listCatUnique = mutableListOf(" ", " ", " ")
 
         for(i in listCat_.indices){
             listCatUnique[i] = listCat_[i]
@@ -76,6 +76,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                             it.putExtra(DetailHistoryActivity.EXTRA_DESCRIPTION, history.description)
                             it.putExtra(DetailHistoryActivity.EXTRA_POINT, history.point.toString())
                             it.putExtra(DetailHistoryActivity.EXTRA_PHOTO, history.trashList[0].photo)
+                            it.putExtra(DetailHistoryActivity.EXTRA_ID, history.id)
                         }
                         itemView.context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
                             .toBundle())
