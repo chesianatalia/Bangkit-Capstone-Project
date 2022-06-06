@@ -2,6 +2,7 @@ package com.chesia.bangkitcapstoneproject.Adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
@@ -14,14 +15,12 @@ import com.chesia.bangkitcapstoneproject.R
 import com.chesia.bangkitcapstoneproject.TrashList
 import com.chesia.bangkitcapstoneproject.databinding.ActivityCardHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ItemPhotosBinding
+import java.util.ArrayList
 import kotlin.properties.Delegates
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     private var listHistories : List<TrashReportsItem>? = null
-    private var isPET = false
-    private var isHDPE = false
-    private var isOther = false
 
 
     fun setListData(histories: List<TrashReportsItem>?){
@@ -35,7 +34,17 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.bind(listHistories?.get(position)!!)
+        val listCat = ArrayList<String>()
+        for(i in 0 until listHistories?.get(position)!!.trashList.size){
+            listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
+        }
+        val listCat_ = listCat.toSet().toList()
+        val listCatUnique = mutableListOf("a", " ", " ")
+
+        for(i in listCat_.indices){
+            listCatUnique[i] = listCat_[i]
+        }
+        holder.bind(listHistories?.get(position)!!, listCatUnique)
     }
 
     override fun getItemCount(): Int {
@@ -45,32 +54,16 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
             RecyclerView.ViewHolder(binding.root){
-                fun bind(history: TrashReportsItem){
-                    for(i in 0 until history.trashList.size){
-                        if(history.trashList[i].category == "PET"){
-                            isPET = true
-                        }
-                        if(history.trashList[i].category == "HDPE"){
-                            isHDPE = true
-                        }
-                        if(history.trashList[i].category == "Other"){
-                            isOther = true
-                        }
-                    }
-
+                fun bind(history: TrashReportsItem, listCat: MutableList<String>){
+                    Log.d("LISTCAT", listCat.toString())
                     binding.apply {
                         tvStatus.text = history.status
-                        if(isPET){
-                            tvCategory1.text = "PET"
-                        }
-                        if(isHDPE){
-                            tvCategory2.text = "HDPE"
-                        }
-                        if(isOther){
-                            tvCategory3.text = "Other"
-                        }
                         tvQuantity1.text = history.trashList[0].quantity.toString()
                         tvStatus.text = history.status
+
+                        tvCategory1.text = listCat[0]
+                        tvCategory2.text = listCat[1]
+                        tvCategory3.text = listCat[2]
 
                         Glide.with(itemView)
                             .load(history.trashList[0].photo)
