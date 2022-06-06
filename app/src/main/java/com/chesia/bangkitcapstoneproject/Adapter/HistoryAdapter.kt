@@ -35,16 +35,52 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val listCat = ArrayList<String>()
+<<<<<<< Updated upstream
         for(i in 0 until listHistories?.get(position)!!.trashList.size){
             listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
+=======
+        val listQty = ArrayList<Int>()
+
+        for (i in 0 until listHistories?.get(position)!!.trashList.size) {
+            listCat.add(listHistories?.get(position)!!.trashList[i].category!!)
+            listQty.add(listHistories?.get(position)!!.trashList[i].quantity)
+>>>>>>> Stashed changes
         }
         val listCat_ = listCat.toSet().toList()
         val listCatUnique = mutableListOf(" ", " ", " ")
 
+<<<<<<< Updated upstream
         for(i in listCat_.indices){
             listCatUnique[i] = listCat_[i]
         }
         holder.bind(listHistories?.get(position)!!, listCatUnique)
+=======
+        val listQtyUnique = mutableListOf(0, 0, 0)
+
+        if(listCat_.contains("PET")){
+            listCatUnique[0] = "PET"
+        }
+        if(listCat_.contains("HDPE")){
+            listCatUnique[1] = "HDPE"
+        }
+        if(listCat_.contains("Other")){
+            listCatUnique[2] = "Other"
+        }
+
+        for (i in listQty.indices) {
+            if(listCat[i] == "PET"){
+                listQtyUnique[0] = listQtyUnique[0] + listQty[i]
+            }
+            if(listCat[i] == "HDPE"){
+                listQtyUnique[1] = listQtyUnique[1] + listQty[i]
+            }
+            if(listCat[i].lowercase() == "other"){
+                listQtyUnique[2] = listQtyUnique[2] + listQty[i]
+            }
+        }
+
+        holder.bind(listHistories?.get(position)!!, listQtyUnique)
+>>>>>>> Stashed changes
     }
 
     override fun getItemCount(): Int {
@@ -83,6 +119,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
                     }
 
+<<<<<<< Updated upstream
                 }
 
     }
@@ -91,4 +128,49 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     }
 
+=======
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(
+            history: TrashReportsItem,
+            listQty: MutableList<Int>
+        ) {
+
+            val barcodeEncoder = BarcodeEncoder()
+            val qrBitmap = barcodeEncoder.encodeBitmap(history.id, BarcodeFormat.QR_CODE, 512, 512)
+
+            binding.apply {
+                tvStatus.text = history.status
+                tvQuantity1.text = history.trashList[0].quantity.toString()
+                tvStatus.text = history.status
+
+                tvCategory1.text = "PET"
+                tvCategory2.text = "HDPE"
+                tvCategory3.text = "Other"
+
+                tvQuantity1.text = listQty[0].toString()
+                tvQuantity2.text = listQty[1].toString()
+                tvQuantity3.text = listQty[2].toString()
+
+                Glide.with(itemView)
+                    .load(qrBitmap)
+                    .into(imgBarcode)
+
+            }
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailHistoryActivity::class.java).also {
+                    it.putExtra(DetailHistoryActivity.EXTRA_STATUS, history.status)
+                    it.putExtra(DetailHistoryActivity.EXTRA_DESCRIPTION, history.description)
+                    it.putExtra(DetailHistoryActivity.EXTRA_POINT, history.point.toString())
+                    it.putExtra(DetailHistoryActivity.EXTRA_ID, history.id)
+                }
+                itemView.context.startActivity(
+                    intent,
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
+                        .toBundle()
+                )
+            }
+        }
+    }
+>>>>>>> Stashed changes
 }
