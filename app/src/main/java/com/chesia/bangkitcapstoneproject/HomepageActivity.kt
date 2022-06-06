@@ -26,6 +26,9 @@ import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
 import com.chesia.bangkitcapstoneproject.Networking.Newslist.NewsListResponse
 import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -33,6 +36,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,6 +51,8 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var mPreferences: LoginPreferences
     private lateinit var mMap: GoogleMap
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var auth: FirebaseAuth
     private val listlatlon = ArrayList<LatLng>()
 
     override fun onRequestPermissionsResult(
@@ -81,6 +89,17 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         getUserData(token)
         getPointUser(token)
         getNews(token)
+
+        val gso = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        auth = Firebase.auth
+        val user = auth.currentUser
+
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -144,8 +163,18 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun logOut() {
         mPreferences.clearPreference()
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+
+        var user = auth.currentUser
+        if(user?.email.toString() == "null"){
+            startActivity(intent)
+            finish()
+        }else{
+            auth.signOut()
+            googleSignInClient.signOut().addOnCompleteListener(this){
+                startActivity(intent)
+                finish()
+            }
+        }
 
     }
 
@@ -214,7 +243,13 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
                 response: Response<GetTrashResponse>
             ) {
                 if(response.isSuccessful){
-                    binding.tvUserPoint.text = "${response.body()?.data?.trashReports?.get(0)?.point} points"
+                    val point: Int
+                    if(response.body()!!.data.trashReports.isEmpty()){
+                        point = 0
+                    }else{
+                        point = response.body()?.data?.trashReports?.get(0)?.point!!
+                    }
+                    binding.tvUserPoint.text = "$point points"
                 }
             }
 

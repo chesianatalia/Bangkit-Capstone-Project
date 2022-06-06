@@ -66,7 +66,7 @@ class HistoryActivity : AppCompatActivity() {
         historyViewModel.setHistories(mPreferences.getToken())
         historyViewModel.getHistories().observe(this){
             if(it!= null){
-                Log.d("TAG", it[0].point.toString())
+                //Log.d("TAG", it[0].point.toString())
                 historyAdapter.setListData(it)
                 historyAdapter.notifyDataSetChanged()
                 showLoading(false)
