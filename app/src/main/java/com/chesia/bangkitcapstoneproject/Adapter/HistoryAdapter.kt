@@ -81,7 +81,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                 tvQuantity1.text = history.trashList[0].quantity.toString()
                 tvStatus.text = history.status
 
-                tvCategory1.text = "PET"
+                tvCategory1.text = "PETE"
                 tvCategory2.text = "HDPE"
                 tvCategory3.text = "Other"
 
