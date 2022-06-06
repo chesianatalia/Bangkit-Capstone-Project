@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btGooglesignin.setOnClickListener {
             signIn()
+            setProgressBar(true)
             Log.d(TAG, "Button clicked")
         }
 
@@ -187,6 +188,7 @@ class MainActivity : AppCompatActivity() {
                                 finish()
                             }else{
                                 if(response.body()!!.message!! == "Account not found"){
+                                    setProgressBar(false)
                                     Toast.makeText(this@MainActivity, "Silahkan register terlebih dahulu", Toast.LENGTH_SHORT).show()
                                     val intent = Intent(this@MainActivity, RegisterActivity::class.java)
                                     if(user.displayName != null){
@@ -200,6 +202,7 @@ class MainActivity : AppCompatActivity() {
                                     }
                                     startActivity(intent)
                                 }else{
+                                    setProgressBar(false)
                                     auth.signOut()
                                     googleSignInClient.signOut()
                                     Toast.makeText(this@MainActivity, "Password salah", Toast.LENGTH_SHORT).show()
@@ -208,6 +211,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            setProgressBar(false)
                             Toast.makeText(this@MainActivity, "An error occurred", Toast.LENGTH_SHORT).show()
                             auth.signOut()
                             googleSignInClient.signOut()
