@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btGooglesignin.setOnClickListener {
             signIn()
+            setProgressBar(true)
             Log.d(TAG, "Button clicked")
         }
 
@@ -164,55 +166,59 @@ class MainActivity : AppCompatActivity() {
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
+        Log.d("GTOKEN", idToken)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    user!!.getIdToken(true).addOnSuccessListener { result ->
-                        val idToken = result.token
-                        val client = ApiConfig.getApiService().loginwithgoogle(user!!.email.toString(), idToken!!)
-                        client.enqueue(object : Callback<LoginResponse>{
-                            override fun onResponse(
-                                call: Call<LoginResponse>,
-                                response: Response<LoginResponse>
-                            ) {
-                                setProgressBar(false)
-                                if(response.isSuccessful && response.body()!!.data != null){
-                                    mPreferences.setToken(response.body()!!.data!!.token)
-                                    Log.d("respToken", response.body()!!.data!!.token)
-                                    Log.d("GTOKEN", idToken)
-                                    val intent = Intent(this@MainActivity, HomepageActivity::class.java);
-                                    startActivity(intent)
-                                    finish()
-                                }else{
-                                    if(response.body()!!.message!! == "Account not found"){
-                                        Toast.makeText(this@MainActivity, "Silahkan register terlebih dahulu", Toast.LENGTH_SHORT).show()
-                                        val intent = Intent(this@MainActivity, RegisterActivity::class.java)
-                                        if(user.displayName != null){
-                                            intent.putExtra("name", user.displayName)
-                                        }
-                                        if(user.email != null){
-                                            intent.putExtra("email", user.email)
-                                        }
-                                        if(user.phoneNumber != null){
-                                            intent.putExtra("phone", user.phoneNumber)
-                                        }
-                                        startActivity(intent)
-                                    }else{
-                                        Toast.makeText(this@MainActivity, "Password salah", Toast.LENGTH_SHORT).show()
+                    val client = ApiConfig.getApiService().loginwithgoogle(user!!.email.toString(), idToken!!)
+                    Log.d("GTOKEN", user!!.email.toString())
+                    client.enqueue(object : Callback<LoginResponse>{
+                        override fun onResponse(
+                            call: Call<LoginResponse>,
+                            response: Response<LoginResponse>
+                        ) {
+                            setProgressBar(false)
+                            if(response.isSuccessful && response.body()!!.data != null){
+                                mPreferences.setToken(response.body()!!.data!!.token)
+                                val intent = Intent(this@MainActivity, HomepageActivity::class.java);
+                                startActivity(intent)
+                                finish()
+                            }else{
+                                if(response.body()!!.message!! == "Account not found"){
+                                    setProgressBar(false)
+                                    Toast.makeText(this@MainActivity, "Silahkan register terlebih dahulu", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@MainActivity, RegisterActivity::class.java)
+                                    if(user.displayName != null){
+                                        intent.putExtra("name", user.displayName)
                                     }
+                                    if(user.email != null){
+                                        intent.putExtra("email", user.email)
+                                    }
+                                    if(user.phoneNumber != null){
+                                        intent.putExtra("phone", user.phoneNumber)
+                                    }
+                                    startActivity(intent)
+                                }else{
+                                    setProgressBar(false)
+                                    auth.signOut()
+                                    googleSignInClient.signOut()
+                                    Toast.makeText(this@MainActivity, "Password salah", Toast.LENGTH_SHORT).show()
                                 }
                             }
+                        }
 
-                            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                                Toast.makeText(this@MainActivity, "An error occurred", Toast.LENGTH_SHORT).show()
-                                Log.d("NetworkError", "ERROR: ${t.message}")
-                            }
+                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            setProgressBar(false)
+                            Toast.makeText(this@MainActivity, "An error occurred", Toast.LENGTH_SHORT).show()
+                            auth.signOut()
+                            googleSignInClient.signOut()
+                            Log.d("NetworkError", "ERROR: ${t.message}")
+                        }
 
-                        })
-                    }
+                    })
 
                 } else {
                     // If sign in fails, display a message to the user.

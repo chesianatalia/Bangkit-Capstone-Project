@@ -23,8 +23,12 @@ import com.chesia.bangkitcapstoneproject.Local.LoginPreferences
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.GetTrashResponse
 import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
+import com.chesia.bangkitcapstoneproject.Networking.Newslist.NewsListResponse
 import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -32,6 +36,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +51,8 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var mPreferences: LoginPreferences
     private lateinit var mMap: GoogleMap
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var auth: FirebaseAuth
     private val listlatlon = ArrayList<LatLng>()
 
     override fun onRequestPermissionsResult(
@@ -76,15 +85,20 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(binding.toolbar)
 
         mPreferences = LoginPreferences(this)
-<<<<<<< Updated upstream
-        getUserData(mPreferences.getToken())
-        getPointUser(mPreferences.getToken())
-=======
+
         val token = mPreferences.getToken()
         getUserData(token)
-//        getPointUser(token)
+//         getPointUser(token)
         getNews(token)
->>>>>>> Stashed changes
+
+        val gso = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        auth = Firebase.auth
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -148,8 +162,18 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun logOut() {
         mPreferences.clearPreference()
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+
+        var user = auth.currentUser
+        if(user?.email.toString() == "null"){
+            startActivity(intent)
+            finish()
+        }else{
+            auth.signOut()
+            googleSignInClient.signOut().addOnCompleteListener(this){
+                startActivity(intent)
+                finish()
+            }
+        }
 
     }
 
@@ -163,6 +187,25 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+    }
+
+    private fun getNews(token: String) {
+        ApiConfig.getApiService().getNewsList(token = "Bearer $token")
+            .enqueue(object : Callback<NewsListResponse> {
+                override fun onResponse(
+                    call: Call<NewsListResponse>,
+                    response: Response<NewsListResponse>
+                ) {
+                    if(response.isSuccessful && response.body() != null){
+                        Glide.with(this@HomepageActivity).load(response.body()!!.data!!.news!![0]!!.image).fitCenter().into(binding.imgNews)
+                        binding.tvNews.text = response.body()!!.data!!.news!![0]!!.description
+                    }
+                }
+
+                override fun onFailure(call: Call<NewsListResponse>, t: Throwable) {
+                    Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
     }
 
     private fun getUserData(token:String){
@@ -186,31 +229,13 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
-                Log.d("Error", ": ${t.message}")
+                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
-<<<<<<< Updated upstream
-    private fun getPointUser(token:String){
-        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
-            override fun onResponse(
-                call: Call<GetTrashResponse>,
-                response: Response<GetTrashResponse>
-            ) {
-                if(response.isSuccessful){
-                    binding.tvUserPoint.text = "${response.body()?.data?.trashReports?.get(0)?.point} points"
-                }
-            }
 
-            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
-                Log.d("Error", ": ${t.message}")
-            }
-
-        })
-    }
-=======
 //    private fun getPointUser(token:String){
 //        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
 //            override fun onResponse(
@@ -231,7 +256,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 //
 //        })
 //    }
->>>>>>> Stashed changes
+
 
     override fun onMapReady(p0: GoogleMap) {
         mMap = p0

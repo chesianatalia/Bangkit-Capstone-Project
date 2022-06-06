@@ -2,6 +2,7 @@ package com.chesia.bangkitcapstoneproject.Adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
@@ -14,17 +15,16 @@ import com.chesia.bangkitcapstoneproject.R
 import com.chesia.bangkitcapstoneproject.TrashList
 import com.chesia.bangkitcapstoneproject.databinding.ActivityCardHistoryBinding
 import com.chesia.bangkitcapstoneproject.databinding.ItemPhotosBinding
+import java.util.ArrayList
+import kotlin.properties.Delegates
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     private var listHistories: List<TrashReportsItem>? = null
 
-<<<<<<< Updated upstream
     fun setListData(histories: List<TrashReportsItem>?){
-=======
-
-    fun setListData(histories: List<TrashReportsItem>?) {
->>>>>>> Stashed changes
         this.listHistories = histories
     }
 
@@ -36,9 +36,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-<<<<<<< Updated upstream
-        holder.bind(listHistories?.get(position)!!)
-=======
+
         val listCat = ArrayList<String>()
         val listQua = ArrayList<Int>()
         for (i in 0 until listHistories?.get(position)!!.trashList.size) {
@@ -56,11 +54,11 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
         }
 
         for (i in listQua_.indices) {
+
             listQuaUnique[i] = listQua_[i]
         }
 
         holder.bind(listHistories?.get(position)!!, listCatUnique, listQuaUnique)
->>>>>>> Stashed changes
     }
 
     override fun getItemCount(): Int {
@@ -69,30 +67,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     }
 
     inner class HistoryViewHolder(private val binding: ActivityCardHistoryBinding) :
-<<<<<<< Updated upstream
-            RecyclerView.ViewHolder(binding.root){
-                fun bind(history: TrashReportsItem){
-                    binding.apply {
-                        tvStatus.text = history.status
-                        tvCategory1.text = history.trashList[0]?.category
-                        tvQuantity1.text = history.trashList[0].quantity?.toString()
 
-                        Glide.with(itemView)
-                            .load(history.trashList[0].photo)
-                            .into(imgBarcode)
-
-                    }
-
-                    itemView.setOnClickListener{
-                        val intent = Intent(itemView.context, DetailHistoryActivity::class.java).also {
-                            it.putExtra(DetailHistoryActivity.EXTRA_STATUS, history.status)
-                            it.putExtra(DetailHistoryActivity.EXTRA_DESCRIPTION, history.description)
-                            it.putExtra(DetailHistoryActivity.EXTRA_POINT, history.point.toString())
-                            it.putExtra(DetailHistoryActivity.EXTRA_PHOTO, history.trashList[0].photo)
-                        }
-                        itemView.context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
-                            .toBundle())
-=======
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             history: TrashReportsItem,
@@ -139,7 +114,6 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                     ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
                         .toBundle()
                 )
->>>>>>> Stashed changes
 
             }
 

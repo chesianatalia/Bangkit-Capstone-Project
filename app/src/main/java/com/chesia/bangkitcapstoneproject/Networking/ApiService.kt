@@ -1,6 +1,7 @@
 package com.chesia.bangkitcapstoneproject.Networking
 
 import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
+import com.chesia.bangkitcapstoneproject.Networking.Newslist.NewsListResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -29,7 +30,7 @@ interface ApiService {
     @POST("sign-in")
     fun loginwithgoogle(
         @Field("email") email: String,
-        @Field("token") token: String
+        @Field("googleToken") googleToken: String
     ): Call<LoginResponse>
 
     @Multipart
@@ -53,6 +54,11 @@ interface ApiService {
     fun getMapList(
         @Header("Authorization") token: String
     ): Call<MapListResponse>
+
+    @GET("user/news")
+    fun getNewsList(
+        @Header("Authorization") token: String
+    ): Call<NewsListResponse>
 
     @GET("user/trash-report")
     fun getHistory(
