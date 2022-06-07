@@ -159,6 +159,7 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun getUserData(token:String){
+        showLoading(true)
 
         ApiConfig.getApiService().getUserProfile(token = "Bearer $token")
             .enqueue(object : Callback<UserProfileResponse>{
@@ -175,11 +176,18 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
                         tvUserEmail.text = response.body()?.data?.user?.email
 //                        tvUserPoint.text = "${response.body()?.data?.user?.status} points"
                     }
+                    showLoading(false)
                 }
             }
 
             override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
+<<<<<<< Updated upstream
                 Log.d("Error", ": ${t.message}")
+=======
+                showLoading(false)
+                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
+
+>>>>>>> Stashed changes
             }
 
         })
@@ -227,6 +235,14 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
                     Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
     companion object {
