@@ -79,6 +79,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar">
 
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,10 +146,13 @@
                         android:id="@+id/line_cardView"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="6dp"
                         android:background="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.23"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/img_User" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_userEmail" />
 
                     <ImageView
                         android:id="@+id/img_points"
@@ -178,6 +182,26 @@
 
 
             </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="19dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_desc" />
 
             <TextView
                 android:id="@+id/tv_greeting"
@@ -261,6 +285,7 @@
                     app:layout_constraintStart_toStartOf="@+id/maps"
                     app:layout_constraintTop_toBottomOf="@+id/maps"
                     tools:context=".MapsActivity" />
+
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -276,16 +301,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/maps" />
 
-            <View
-                android:id="@+id/img_news"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_news"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
-                android:background="@drawable/rectangle"
+                app:cardCornerRadius="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_info" />
+                app:layout_constraintTop_toBottomOf="@id/tv_info">
+
+                <ImageView
+                    android:id="@+id/img_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_news"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="@+id/cv_news"
+                app:layout_constraintStart_toStartOf="@+id/cv_news"
+                app:layout_constraintTop_toBottomOf="@+id/cv_news" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -294,8 +338,17 @@
                 android:text="         "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_news"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_news"/>
 
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="28dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/maps" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

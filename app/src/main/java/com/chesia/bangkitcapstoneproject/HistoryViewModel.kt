@@ -1,5 +1,6 @@
 package com.chesia.bangkitcapstoneproject
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
@@ -20,6 +21,7 @@ class HistoryViewModel : ViewModel(){
                 response: Response<GetTrashResponse>
             ) {
                 if(response.isSuccessful){
+                    Log.d("CEKINET", "INI BERHASIL")
                     listHistories.postValue(response.body()?.data?.trashReports)
                 } else {
                     listHistories.postValue(null)
@@ -27,6 +29,7 @@ class HistoryViewModel : ViewModel(){
             }
 
             override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
+                Log.d("CEKINET", "INI GAGAL")
                 listHistories.postValue(null)
             }
         })

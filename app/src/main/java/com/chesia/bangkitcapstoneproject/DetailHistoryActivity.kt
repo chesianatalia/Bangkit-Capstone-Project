@@ -26,6 +26,9 @@ class DetailHistoryActivity : AppCompatActivity() {
             tvStatus.text = intent.getStringExtra(EXTRA_STATUS)
             tvNotes.text = intent.getStringExtra(EXTRA_DESCRIPTION)
             tvPoints.text = intent.getStringExtra(EXTRA_POINT)
+            textViewPete.text = intent.getStringExtra(EXTRA_QUANTITY)
+            textViewhdpe.text = intent.getStringExtra(EXTRA_QUANTITY1)
+            textViewOther.text = intent.getStringExtra(EXTRA_QUANTITY2)
 
             Glide.with(this@DetailHistoryActivity)
                 .load(qrBitmap)
@@ -39,9 +42,10 @@ class DetailHistoryActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_CATEGORY = "extra_category"
-        const val EXTRA_PHOTO = "extra_photo"
         const val EXTRA_DESCRIPTION = "extra_description"
         const val EXTRA_QUANTITY = "extra_quantity"
+        const val EXTRA_QUANTITY1 = "HDPE"
+        const val EXTRA_QUANTITY2 = "OTHER"
         const val EXTRA_POINT = "extra_poin"
         const val EXTRA_STATUS = "extra_status"
         const val EXTRA_ID = "extra_id"
