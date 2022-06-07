@@ -40,22 +40,24 @@
 
         <TextView
             android:id="@+id/tv_photoDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textAlignment="textStart"
             android:text="[date]"
-            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintStart_toStartOf="@id/cardView"
+            card_view:layout_constraintEnd_toEndOf="@id/cardView"
             card_view:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <TextView
             android:id="@+id/tv_photoTime"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textAlignment="textStart"
             android:text="[time]"
-            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintStart_toStartOf="@id/tv_photoDate"
+            card_view:layout_constraintEnd_toEndOf="@id/tv_photoDate"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_photoDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
