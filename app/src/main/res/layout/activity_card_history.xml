@@ -37,7 +37,8 @@
             android:layout_marginTop="17dp"
             cardview:layout_constraintStart_toStartOf="parent"
             cardview:layout_constraintTop_toBottomOf="@id/tv_status"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/trash_barcode" />
 
 
         <TextView
@@ -91,12 +92,12 @@
 
         <TextView
             android:id="@+id/tv_Quantity1"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:textAlignment="textEnd"
             cardview:layout_constraintBottom_toBottomOf="@+id/tv_Category1"
             cardview:layout_constraintEnd_toEndOf="parent"
             cardview:layout_constraintTop_toTopOf="@+id/tv_Category1"
@@ -104,12 +105,12 @@
 
         <TextView
             android:id="@+id/tv_Quantity2"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:textAlignment="textEnd"
             cardview:layout_constraintBottom_toBottomOf="@+id/tv_Category2"
             cardview:layout_constraintEnd_toEndOf="parent"
             cardview:layout_constraintTop_toTopOf="@+id/tv_Category2"
@@ -117,12 +118,12 @@
 
         <TextView
             android:id="@+id/tv_Quantity3"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:textAlignment="textEnd"
             cardview:layout_constraintBottom_toBottomOf="@+id/tv_Category3"
             cardview:layout_constraintEnd_toEndOf="parent"
             cardview:layout_constraintTop_toTopOf="@+id/tv_Category3"

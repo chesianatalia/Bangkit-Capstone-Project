@@ -51,5 +51,6 @@
 
     <string name="detailhistory">Detail</string>
     <string name="plasticweight">Weight/kg</string>
+    <string name="trash_barcode">Trash Barcode</string>
 
 </resources>
