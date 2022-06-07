@@ -108,6 +108,9 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                     it.putExtra(DetailHistoryActivity.EXTRA_DESCRIPTION, history.description)
                     it.putExtra(DetailHistoryActivity.EXTRA_POINT, history.point.toString())
                     it.putExtra(DetailHistoryActivity.EXTRA_ID, history.id)
+                    it.putExtra(DetailHistoryActivity.EXTRA_QUANTITY, listQty[0].toString())
+                    it.putExtra(DetailHistoryActivity.EXTRA_QUANTITY1, listQty[1].toString())
+                    it.putExtra(DetailHistoryActivity.EXTRA_QUANTITY2, listQty[2].toString())
                 }
                 itemView.context.startActivity(
                     intent,
