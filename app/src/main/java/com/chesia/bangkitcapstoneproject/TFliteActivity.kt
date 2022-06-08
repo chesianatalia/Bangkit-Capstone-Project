@@ -110,14 +110,13 @@ class TFliteActivity : AppCompatActivity() {
         try {
             val model = Model3.newInstance(applicationContext)
 
-            // Creates inputs for reference.
             val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
             val byteBuffer = ByteBuffer.allocateDirect(4 * imgSize * imgSize * 3)
             byteBuffer.order(ByteOrder.nativeOrder())
             val intValues = IntArray(imgSize * imgSize)
             image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
             var pixel = 0
-            //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
+
             for (i in 0 until imgSize) {
                 for (j in 0 until imgSize) {
                     val `val` = intValues[pixel++] // RGB
@@ -128,11 +127,10 @@ class TFliteActivity : AppCompatActivity() {
             }
             inputFeature0.loadBuffer(byteBuffer)
 
-            // Runs model inference and gets result.
             val outputs = model.process(inputFeature0)
             val outputFeature0 = outputs.outputFeature0AsTensorBuffer
             val confidences = outputFeature0.floatArray
-            // find the index of the class with the biggest confidence.
+
             var maxPos = 0
             var maxConfidence = -10f
             for (i in confidences.indices) {
@@ -153,8 +151,6 @@ class TFliteActivity : AppCompatActivity() {
             val class_: String = classes[maxPos]
             Log.d("confidences", "CLASS: $class_")
             //binding.tvModelresult.text = classes[maxPos]
-//
-//            // Releases model resources if no longer used.
 
             model.close()
             return classes[maxPos]
