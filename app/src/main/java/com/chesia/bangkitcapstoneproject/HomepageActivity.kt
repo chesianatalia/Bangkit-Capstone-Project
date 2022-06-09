@@ -24,7 +24,7 @@ import com.chesia.bangkitcapstoneproject.Networking.ApiConfig
 import com.chesia.bangkitcapstoneproject.Networking.GetTrashResponse
 import com.chesia.bangkitcapstoneproject.Networking.Maplist.MapListResponse
 import com.chesia.bangkitcapstoneproject.Networking.Newslist.NewsListResponse
-import com.chesia.bangkitcapstoneproject.Networking.UserProfileResponse
+import com.chesia.bangkitcapstoneproject.Networking.UserResponse
 import com.chesia.bangkitcapstoneproject.databinding.ActivityHomepageBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -88,7 +88,6 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val token = mPreferences.getToken()
         getUserData(token)
-//         getPointUser(token)
         getNews(token)
 
         val gso = GoogleSignInOptions
@@ -212,54 +211,31 @@ class HomepageActivity : AppCompatActivity(), OnMapReadyCallback {
         showLoading(true)
 
         ApiConfig.getApiService().getUserProfile(token = "Bearer $token")
-            .enqueue(object : Callback<UserProfileResponse>{
+            .enqueue(object : Callback<UserResponse>{
             override fun onResponse(
-                call: Call<UserProfileResponse>,
-                response: Response<UserProfileResponse>
+                call: Call<UserResponse>,
+                response: Response<UserResponse>
             ) {
                 if(response.isSuccessful){
                     Log.d("Response", response.body()?.success.toString())
+                    showLoading(false)
                     binding.apply {
 //                        Glide.with(this@HomepageActivity).load(response.body()?.data?.user?.photoUrl).circleCrop().into(binding.imgUser)
-                        tvUserName.text = response.body()?.data?.user?.fullname
-                        tvUserPhoneNumber.text = response.body()?.data?.user?.meta?.phone
-                        tvUserEmail.text = response.body()?.data?.user?.email
-//                        tvUserPoint.text = "${response.body()?.data?.user?.status} points"
+                        tvUserName.text = response.body()?.data?.fullname
+                        tvUserPhoneNumber.text = response.body()?.data?.meta?.phone
+                        tvUserEmail.text = response.body()?.data?.email
+                        tvUserPoint.text = "${response.body()?.data?.points.toString()} points"
                     }
-                    showLoading(false)
                 }
             }
 
-            override fun onFailure(call: Call<UserProfileResponse>, t: Throwable) {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 showLoading(false)
                 Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
             }
 
         })
     }
-
-
-//    private fun getPointUser(token:String){
-//        ApiConfig.getApiService().getHistory(token = "Bearer $token").enqueue(object : Callback<GetTrashResponse>{
-//            override fun onResponse(
-//                call: Call<GetTrashResponse>,
-//                response: Response<GetTrashResponse>
-//            ) {
-//                if(response.isSuccessful){
-//                    if(response.body()?.data?.trashReports?.get(0)?.point ?: =null){
-//
-//                    }
-//                    binding.tvUserPoint.text = "${response.body()?.data?.trashReports?.get(0)?.point} points"
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<GetTrashResponse>, t: Throwable) {
-//                Toast.makeText(this@HomepageActivity, "Error ${t.message}", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-//    }
-
 
     override fun onMapReady(p0: GoogleMap) {
         mMap = p0
