@@ -49,7 +49,7 @@ interface ApiService {
     @GET("me")
     fun getUserProfile(
         @Header("Authorization") token: String
-    ): Call<UserProfileResponse>
+    ): Call<UserResponse>
 
     @GET("user/collection-point")
     fun getMapList(
