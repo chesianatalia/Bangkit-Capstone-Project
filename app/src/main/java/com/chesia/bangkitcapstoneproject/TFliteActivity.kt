@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import com.chesia.bangkitcapstoneproject.databinding.ActivityTfliteBinding
 import com.chesia.bangkitcapstoneproject.ml.Model2
 import com.chesia.bangkitcapstoneproject.ml.Model3
+import com.chesia.bangkitcapstoneproject.ml.Model4
 import com.google.gson.Gson
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -108,7 +109,7 @@ class TFliteActivity : AppCompatActivity() {
 
     private fun classifyImage(image: Bitmap) : String {
         try {
-            val model = Model3.newInstance(applicationContext)
+            val model = Model4.newInstance(applicationContext)
 
             val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
             val byteBuffer = ByteBuffer.allocateDirect(4 * imgSize * imgSize * 3)
