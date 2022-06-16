@@ -46,7 +46,7 @@ class TFliteActivity : AppCompatActivity() {
 
 
         val size = photoList!!.size
-        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+        val currentDate: String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
         for (i in 0 until photoList!!.size) {
             if(doInference(convertBmp(getBitmap(contentResolver, Uri.parse(photoList[i]))!!)!!) == "PET"){
