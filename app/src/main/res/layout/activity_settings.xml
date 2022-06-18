@@ -207,4 +207,16 @@
         app:layout_constraintTop_toTopOf="@id/ic_delete"
         android:focusable="true" />
 
+    <TextView
+        android:id="@+id/Attribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="236dp"
+        android:text="@string/Attribution"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ic_delete"
+        app:layout_constraintTop_toBottomOf="@+id/ic_delete" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
