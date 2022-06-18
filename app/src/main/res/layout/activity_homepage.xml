@@ -18,6 +18,18 @@
             android:layout_height="wrap_content"
             tools:context=".HomepageActivity">
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:translationZ="90dp"
+                android:visibility="invisible"
+                app:layout_constraintVertical_bias="0.25"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -111,7 +123,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        android:textAlignment="textStart"
+                        android:textAlignment="textEnd"
                         app:layout_constraintStart_toStartOf="@+id/tv_userName"
                         app:layout_constraintEnd_toEndOf="@+id/tv_userName"
                         app:layout_constraintTop_toBottomOf="@id/tv_userName"

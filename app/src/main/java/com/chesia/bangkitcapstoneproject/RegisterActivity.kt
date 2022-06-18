@@ -31,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
             binding.edtRegisterEmail.setText(intent.getStringExtra("email"))
         }
         if(intent.getStringExtra("phone") != null){
-            binding.edtRegisterEmail.setText(intent.getStringExtra("phone"))
+            binding.edtRegisterTelp.setText(intent.getStringExtra("phone"))
         }
 
         binding.btRegister.setOnClickListener{
@@ -41,7 +41,8 @@ class RegisterActivity : AppCompatActivity() {
                 val client = ApiConfig.getApiService().register(
                     binding.edtRegisterNama.text.toString(),
                     binding.edtRegisterEmail.text.toString(),
-                    binding.edtRegisterPassword.text.toString())
+                    binding.edtRegisterPassword.text.toString(),
+                    binding.edtRegisterTelp.text.toString(),)
 
                 client.enqueue(object : Callback<RegisterResponse>{
                     override fun onResponse(

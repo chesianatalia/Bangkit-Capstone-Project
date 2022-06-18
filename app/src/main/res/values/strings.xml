@@ -51,10 +51,7 @@
 
     <string name="detailhistory">Detail</string>
     <string name="plasticweight">Weight/kg</string>
-<<<<<<< Updated upstream
-=======
+  
     <string name="trash_barcode">Trash Barcode</string>
     <string name="Attribution">Wallpaper Blue polygon vector created by\n Harryarts - www.freepik.com</string>
->>>>>>> Stashed changes
-
 </resources>

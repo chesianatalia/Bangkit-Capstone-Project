@@ -1,25 +1,26 @@
 package com.chesia.bangkitcapstoneproject.Networking
 
-data class UserProfileResponse(
+data class UserResponse(
 	val data: Data,
 	val success: Boolean
 )
 
-data class Meta(
-	val phone: String
-)
-
-data class User(
+data class Data(
+	val createdAt: CreatedAt,
 	val password: String,
 	val meta: Meta,
 	val id: String,
 	val fullname: String,
+	val privilege: String,
 	val email: String,
-	val status: String
+	val points: Int,
+	val status: String,
+	val updatedAt: UpdatedAt
 )
 
-data class Data(
-	val user: User
-)
 
+
+data class Meta(
+	val phone: String
+)
 

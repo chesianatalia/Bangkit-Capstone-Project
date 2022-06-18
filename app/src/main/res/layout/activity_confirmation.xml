@@ -87,17 +87,16 @@
 
         <TextView
             android:id="@+id/textViewPete"
-            android:layout_width="32dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text="0"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/PETE"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+            app:layout_constraintStart_toStartOf="@+id/beratSampah"
+            app:layout_constraintEnd_toEndOf="@+id/beratSampah"
+            app:layout_constraintTop_toTopOf="@+id/PETE" />
 
         <ImageView
             android:id="@+id/imageHdpe"
@@ -123,16 +122,16 @@
 
         <TextView
             android:id="@+id/textViewhdpe"
-            android:layout_width="32dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text="0"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/HDPE"
-            app:layout_constraintEnd_toEndOf="@+id/textViewPete"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPete" />
+            app:layout_constraintEnd_toEndOf="@+id/beratSampah"
+            app:layout_constraintStart_toStartOf="@+id/beratSampah"
+            app:layout_constraintTop_toTopOf="@+id/HDPE"/>
 
         <ImageView
             android:id="@+id/imageOther"
@@ -158,16 +157,17 @@
 
         <TextView
             android:id="@+id/textViewOther"
-            android:layout_width="32dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="0"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/OTHER"
-            app:layout_constraintEnd_toEndOf="@+id/textViewhdpe"
-            app:layout_constraintTop_toBottomOf="@+id/textViewhdpe" />
+            app:layout_constraintEnd_toEndOf="@+id/beratSampah"
+            app:layout_constraintStart_toStartOf="@+id/beratSampah"
+            app:layout_constraintTop_toTopOf="@+id/OTHER"/>
 
         <TextView
             android:id="@+id/textView6"
@@ -216,13 +216,13 @@
         <TextView
             android:id="@+id/tv_points"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
             android:text="0 Pts"
             android:textColor="@color/black"
+            android:textAlignment="textEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/view4"
-            app:layout_constraintEnd_toEndOf="@+id/view4"
+            app:layout_constraintEnd_toEndOf="@+id/tv_notes"
             app:layout_constraintTop_toTopOf="@+id/view4" />
 
         <TextView

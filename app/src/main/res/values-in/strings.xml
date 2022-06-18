@@ -51,9 +51,7 @@
     <string name="list_photos_title">List Foto</string>
     <string name="detailhistory">Detail</string>
     <string name="plasticweight">Berat/kg</string>
-<<<<<<< Updated upstream
-=======
+
     <string name="trash_barcode">Trash Barcode</string>
     <string name="Attribution">Wallpaper Blue polygon vector created by Harryarts - www.freepik.com</string>
->>>>>>> Stashed changes
 </resources>

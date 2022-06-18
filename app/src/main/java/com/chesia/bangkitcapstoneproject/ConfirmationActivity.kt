@@ -92,6 +92,7 @@ class ConfirmationActivity : AppCompatActivity(), OnMapReadyCallback {
                     if(response.isSuccessful && response.body() != null){
                         Toast.makeText(this@ConfirmationActivity, "Trash report sent!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@ConfirmationActivity, TransactionSuccess::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     }
                 }

@@ -16,6 +16,7 @@ interface ApiService {
         @Field("fullname") fullname: String,
         @Field("email") email: String,
         @Field("password") password: String,
+        @Field("phone") phone:String,
         @Field("status") status: String = "active"
     ): Call<RegisterResponse>
 
@@ -48,7 +49,7 @@ interface ApiService {
     @GET("me")
     fun getUserProfile(
         @Header("Authorization") token: String
-    ): Call<UserProfileResponse>
+    ): Call<UserResponse>
 
     @GET("user/collection-point")
     fun getMapList(
